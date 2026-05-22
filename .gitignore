@@ -7,6 +7,8 @@ node_modules/
 dist/
 dev-dist/
 build/
+.next/
+out/
 .vite/
 *.tsbuildinfo
 
@@ -61,6 +63,10 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw?
+
+# Playwright
+playwright-report/
+test-results/
 
 # Misc
 *.local
