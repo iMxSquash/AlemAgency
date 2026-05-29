@@ -5,14 +5,14 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
-  { href: "/tableau-de-bord", label: "Tableau de bord", icon: LayoutDashboard, badge: null },
+  { href: "/bibliotheque", label: "Tableau de bord", icon: LayoutDashboard, badge: null },
   { href: "/en-cours", label: "En cours...", icon: PlayCircle, badge: 0 },
-  { href: "/bibliotheque", label: "Fiches enregistrées", icon: Bookmark, badge: 8 },
+  { href: "/mes-fiches", label: "Fiches enregistrées", icon: Bookmark, badge: 8 },
 ];
 
 const FORUM_ITEMS = [
-  { href: "/populaires", label: "Populaires" },
-  { href: "/explorer", label: "Explorer" },
+  // { href: "/populaires", label: "Populaires" },
+  { href: "/forum", label: "Explorer" },
 ];
 
 export function Sidebar() {
