@@ -1,9 +1,9 @@
-import { notFound, redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
 import { ThreadDetail } from "@/components/forum/ThreadDetail";
-import { getThreadReplies, getDbThread } from "../actions";
 import forumData from "@/lib/data/forum.json";
+import { createClient } from "@/lib/supabase/server";
 import type { ForumThread } from "@/types";
+import { notFound, redirect } from "next/navigation";
+import { getDbThread, getThreadReplies } from "../actions";
 
 interface Props {
   params: Promise<{ id: string }>;
@@ -32,11 +32,5 @@ export default async function ThreadPage({ params }: Props) {
 
   const { data: dbReplies } = await getThreadReplies(id);
 
-  return (
-    <ThreadDetail
-      thread={thread}
-      dbReplies={dbReplies ?? []}
-      userEmail={user.email ?? ""}
-    />
-  );
+  return <ThreadDetail thread={thread} dbReplies={dbReplies ?? []} userEmail={user.email ?? ""} />;
 }
