@@ -1,0 +1,527 @@
+[
+  {
+    "slug": "tsa-comprendre-le-spectre",
+    "title": "Comprendre le spectre autistique",
+    "description": "Une introduction aux différentes manifestations du TSA pour mieux adapter votre accompagnement au quotidien.",
+    "category": "TSA",
+    "type": "guide",
+    "estimatedReadTime": 8,
+    "tags": ["diagnostic", "sensorialité", "communication", "débutant"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "Le Trouble du Spectre de l'Autisme (TSA) est un trouble neurodéveloppemental qui se manifeste de façon très variable d'une personne à l'autre. Il n'existe pas « un » autisme, mais un continuum de profils avec des forces et des difficultés différentes."
+      },
+      {
+        "type": "list",
+        "title": "Les trois domaines principaux affectés",
+        "items": [
+          "La communication sociale : difficultés à initier ou maintenir une conversation, à comprendre les sous-entendus et l'humour",
+          "Les interactions sociales : interprétation littérale des règles sociales, fatigue sociale intense après des échanges",
+          "Les comportements répétitifs et intérêts restreints : routines rigides, mouvements stéréotypés (stimming), hyperfocalisation sur certains sujets"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Le stimming (balancements, tapotements, vocalises) est une régulation sensorielle naturelle. L'interdire augmente le stress sans résoudre la cause. Cherchez plutôt à comprendre ce qui le déclenche."
+      },
+      {
+        "type": "list",
+        "title": "Ce que vous pouvez observer en classe",
+        "items": [
+          "Difficulté à travailler en groupe ou à s'intégrer dans les jeux collectifs",
+          "Réactions intenses aux bruits, textures, lumières ou odeurs",
+          "Résistance au changement de routine ou de place",
+          "Compétences très hétérogènes : excellent en maths mais en difficulté en lecture, ou inversement"
+        ]
+      },
+      {
+        "type": "warning",
+        "content": "Un élève TSA peut sembler indifférent ou distant sans pour autant manquer d'empathie. La difficulté est souvent d'exprimer ce qu'il ressent, pas de le ressentir."
+      }
+    ]
+  },
+  {
+    "slug": "tsa-communication-alternative",
+    "title": "Communication Alternative et Augmentée (CAA)",
+    "description": "Découvrez les outils et stratégies CAA pour accompagner les élèves TSA qui ont des difficultés de communication verbale.",
+    "category": "TSA",
+    "type": "outil",
+    "estimatedReadTime": 10,
+    "tags": ["CAA", "PECS", "pictogrammes", "communication", "non-verbal"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "La Communication Alternative et Augmentée (CAA) regroupe tous les systèmes qui complètent ou remplacent la parole. Elle ne freine pas le développement du langage oral — au contraire, elle le soutient en réduisant la charge cognitive liée à la communication."
+      },
+      {
+        "type": "list",
+        "title": "Les principaux systèmes CAA",
+        "items": [
+          "PECS (Picture Exchange Communication System) : échange de cartes picturales pour faire des demandes",
+          "Tableaux de communication : grilles de pictogrammes organisés par thèmes",
+          "Applications tablette : GoTalk NOW, Proloquo2Go, Minspeak",
+          "Pictogrammes ARASAAC : symboles gratuits et standardisés, disponibles en ligne"
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Mettre en place un support visuel en classe",
+        "items": [
+          "Identifier les besoins prioritaires : demander de l'aide, exprimer une douleur, choisir une activité",
+          "Créer un tableau de communication simple avec 6 à 12 pictogrammes au départ",
+          "Placer le tableau toujours au même endroit, accessible à l'élève",
+          "Modéliser vous-même l'utilisation du tableau en pointant les images quand vous parlez",
+          "Augmenter progressivement le nombre de symboles au fur et à mesure des besoins"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Commencer petit : 6 pictogrammes bien maîtrisés valent mieux que 50 ignorés. La cohérence entre la maison et l'école accélère les apprentissages — partagez le système avec la famille."
+      },
+      {
+        "type": "warning",
+        "content": "La CAA n'est pas réservée aux élèves non verbaux. Un élève qui parle mais dont le discours est peu fonctionnel peut grandement bénéficier d'un support visuel pour structurer ses échanges."
+      }
+    ]
+  },
+  {
+    "slug": "tsa-gestion-sensorialite",
+    "title": "Gérer la sensorialité en milieu scolaire",
+    "description": "Stratégies concrètes pour adapter l'environnement sensoriel et prévenir les crises liées à la surcharge sensorielle.",
+    "category": "TSA",
+    "type": "fiche",
+    "estimatedReadTime": 7,
+    "tags": ["sensorialité", "environnement", "surcharge", "aménagement"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "De nombreux élèves TSA présentent une hyper ou hypo-sensibilité sensorielle (vue, ouïe, toucher, odorat, goût, proprioception). Ces différences ne sont pas des caprices — elles sont neurologiques et peuvent rendre certains environnements scolaires insupportables."
+      },
+      {
+        "type": "list",
+        "title": "Signaux d'alerte d'une surcharge sensorielle",
+        "items": [
+          "Agitation croissante, mouvements plus fréquents (stimming intensifié)",
+          "Mains sur les oreilles, yeux fermés ou regard fuyant",
+          "Irritabilité soudaine sans raison apparente",
+          "Retrait social ou prostration",
+          "Refus de participer à une activité pourtant habituelle"
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Aménagements simples à mettre en place",
+        "items": [
+          "Proposer des casques anti-bruit lors des moments bruyants (récréation, cantine, travaux en groupe)",
+          "Attribuer une place fixe éloignée des sources de lumière directe ou de bruit (portes, fenêtres)",
+          "Prévenir systématiquement avant un changement d'activité avec un timer visuel (Time Timer)",
+          "Prévoir un espace de décompression accessible sur demande (coin calme, couloir)",
+          "Utiliser des lumières tamisées ou des filtres si les néons sont problématiques"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Demandez à l'élève (ou à sa famille) de remplir un profil sensoriel : quels sons, textures ou lumières sont difficiles ? Cela permet de cibler les aménagements prioritaires sans tout modifier."
+      }
+    ]
+  },
+  {
+    "slug": "tdah-comprendre-le-trouble",
+    "title": "Comprendre le TDAH",
+    "description": "Les bases du TDAH — inattention, hyperactivité, impulsivité — et ce que cela signifie concrètement pour un élève en classe.",
+    "category": "TDAH",
+    "type": "guide",
+    "estimatedReadTime": 7,
+    "tags": ["diagnostic", "attention", "hyperactivité", "débutant"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "Le Trouble Déficit de l'Attention avec ou sans Hyperactivité (TDAH) est un trouble neurodéveloppemental qui affecte les fonctions exécutives : planification, inhibition, mémoire de travail, régulation émotionnelle. Il ne s'agit pas d'un manque de volonté ou d'une mauvaise éducation."
+      },
+      {
+        "type": "list",
+        "title": "Les trois présentations du TDAH",
+        "items": [
+          "Inattentive prédominante : distraction fréquente, oublis, difficulté à suivre des instructions longues, souvent non repérée car pas agitée",
+          "Hyperactive-impulsive prédominante : agitation motrice, difficultés à rester assis, parle excessivement, coupe la parole",
+          "Mixte (la plus fréquente) : combine les deux présentations ci-dessus"
+        ]
+      },
+      {
+        "type": "warning",
+        "content": "Le TDAH inattentif, surtout chez les filles, est fréquemment sous-diagnostiqué. L'élève semble rêveuse ou lente, pas agitée — elle est pourtant en difficulté."
+      },
+      {
+        "type": "list",
+        "title": "Idées reçues à déconstruire",
+        "items": [
+          "\"Il peut se concentrer quand il joue aux jeux vidéo\" : l'hyperfocus est réel et ne contredit pas le TDAH — il est déclenché par la nouveauté et la dopamine",
+          "\"Elle ne fait pas d'efforts\" : le TDAH altère la capacité à initier l'effort, pas la motivation profonde",
+          "\"C'est une question de cadre\" : le cadre aide, mais ne guérit pas un trouble neurologique",
+          "\"Il va s'en sortir en grandissant\" : sans accompagnement, les difficultés persistent à l'âge adulte"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "L'élève TDAH n'a souvent pas conscience de son agitation ou de ses interruptions. Préférez les rappels discrets et privés aux remarques devant la classe, qui génèrent de la honte sans effet durable."
+      }
+    ]
+  },
+  {
+    "slug": "tdah-strategies-attention",
+    "title": "Stratégies pour maintenir l'attention en classe",
+    "description": "Des aménagements pédagogiques concrets pour aider l'élève TDAH à rester ancré pendant les apprentissages.",
+    "category": "TDAH",
+    "type": "fiche",
+    "estimatedReadTime": 9,
+    "tags": ["attention", "pédagogie", "aménagement", "concentration"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "L'attention chez un élève TDAH n'est pas absente — elle est instable et difficile à diriger volontairement. Les stratégies ci-dessous visent à réduire la charge cognitive et à créer un environnement qui soutient l'autorégulation."
+      },
+      {
+        "type": "steps",
+        "title": "Organisation de la séance",
+        "items": [
+          "Annoncer le plan de la séance à l'oral ET à l'écrit au tableau (\"1. Correction, 2. Leçon, 3. Exercice\")",
+          "Fractionner les tâches longues en sous-étapes avec des coches visibles",
+          "Utiliser un timer visuel (Time Timer) pour délimiter les phases de travail — 10-15 min max",
+          "Prévoir une micro-pause motrice entre deux tâches (étirements, marche, manipulation d'objet)",
+          "Rappeler les consignes individuellement avant que l'élève commence, pas seulement à la classe"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Aménagements de la place de travail",
+        "items": [
+          "Place en première rangée, face au tableau, loin des fenêtres et des portes",
+          "Bureau dégagé : seulement le matériel nécessaire à l'activité en cours",
+          "Autoriser les fidgets discrets (balle anti-stress, élastique sous le bureau) — ils libèrent de la bande passante cognitive",
+          "Proposer un paravent si les distracteurs visuels sont problématiques"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Interpeller l'élève par son prénom avant de poser la question à la classe lui donne une seconde pour se reconnecter. C'est plus efficace que de le reprendre après qu'il n'ait pas répondu."
+      },
+      {
+        "type": "warning",
+        "content": "Évitez de supprimer la récréation comme punition pour un élève TDAH : le mouvement est pour lui un besoin physiologique de régulation, pas une récompense."
+      }
+    ]
+  },
+  {
+    "slug": "tdah-gestion-impulsivite",
+    "title": "Accompagner l'impulsivité au quotidien",
+    "description": "Comprendre l'impulsivité liée au TDAH et des stratégies pour aider l'élève à développer son autocontrôle.",
+    "category": "TDAH",
+    "type": "fiche",
+    "estimatedReadTime": 8,
+    "tags": ["impulsivité", "autocontrôle", "comportement", "régulation"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "L'impulsivité TDAH est un déficit d'inhibition : le frein entre l'intention et l'action fonctionne moins bien. L'élève sait souvent qu'il ne devrait pas agir ainsi — mais le comportement part avant que la réflexion ait pu intervenir."
+      },
+      {
+        "type": "list",
+        "title": "Manifestations fréquentes",
+        "items": [
+          "Réponses précipitées sans lire la question en entier",
+          "Interruption des camarades ou de l'enseignant",
+          "Réactions émotionnelles disproportionnées, colères soudaines",
+          "Difficulté à attendre son tour (jeux, prise de parole)",
+          "Passage à l'acte physique avant réflexion (pousser, prendre le matériel de l'autre)"
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Stratégies à mettre en place",
+        "items": [
+          "Établir un signal discret et convenu entre vous et l'élève pour signaler un comportement impulsif sans l'embarrasser",
+          "Proposer un rôle structurant pendant les moments d'attente (distribuer les cahiers, tenir le chronomètre)",
+          "Utiliser la technique \"Stop et respire\" avec un ancrage visuel (poster dans la classe)",
+          "Laisser un brouillon pour noter les idées sans interrompre — cela vide le \"tampon\" mental",
+          "Valoriser les moments de self-control explicitement : \"J'ai remarqué que tu as attendu ton tour, c'est vraiment bien\""
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Les conséquences différées (punition le lendemain) sont peu efficaces avec le TDAH car le cerveau ne fait pas bien le lien. Préférez des retours immédiats, positifs ou correctifs."
+      }
+    ]
+  },
+  {
+    "slug": "dyslexie-adapter-les-textes",
+    "title": "Adapter les textes pour un élève dyslexique",
+    "description": "Mises en forme, polices et outils numériques pour rendre les textes accessibles aux élèves dyslexiques.",
+    "category": "DYS",
+    "type": "fiche",
+    "estimatedReadTime": 8,
+    "tags": ["dyslexie", "lecture", "mise en forme", "accessibilité"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "La dyslexie est un trouble spécifique de l'apprentissage de la lecture qui affecte le décodage phonologique. L'élève peut être intelligent, curieux et travailleur — mais la lecture reste coûteuse en énergie et source d'erreurs. Les adaptations de mise en forme réduisent cette charge sans modifier les exigences de fond."
+      },
+      {
+        "type": "list",
+        "title": "Adaptations de mise en forme recommandées",
+        "items": [
+          "Police : OpenDyslexic, Arial, Verdana ou Calibri — taille minimum 12pt, idéalement 14pt",
+          "Interligne : 1,5 minimum, espace entre les lettres légèrement augmenté",
+          "Texte aligné à gauche uniquement — jamais justifié (les espaces variables gênent le suivi de ligne)",
+          "Paragraphes courts séparés par une ligne vide",
+          "Éviter les textes en majuscules ou en italique sur de longs passages"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Outils numériques utiles",
+        "items": [
+          "Balabolka ou NaturalReader : synthèse vocale qui lit le texte à voix haute",
+          "Immersive Reader (Microsoft) : intégré dans Word, Teams et OneNote, gratuit",
+          "Dyslexia-friendly Word templates : modèles préconfigurés",
+          "Applications de scan + lecture : Adobe Scan + synthèse vocale pour les documents papier"
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Adapter un document existant en 5 minutes",
+        "items": [
+          "Ouvrir le document dans Word ou Google Docs",
+          "Sélectionner tout (Ctrl+A) et changer la police en Arial 13pt",
+          "Passer l'interligne à 1,5",
+          "Désactiver la justification — choisir \"Aligner à gauche\"",
+          "Ajouter une ligne vide entre chaque paragraphe si nécessaire"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Ces adaptations bénéficient à tous les élèves, pas seulement aux dyslexiques. Adopter ces conventions par défaut pour vos documents réduit la charge de travail de différenciation."
+      }
+    ]
+  },
+  {
+    "slug": "dyscalculie-strategies-maths",
+    "title": "Stratégies pour accompagner la dyscalculie",
+    "description": "Comprendre les difficultés liées à la dyscalculie et des outils concrets pour adapter les apprentissages mathématiques.",
+    "category": "DYS",
+    "type": "fiche",
+    "estimatedReadTime": 9,
+    "tags": ["dyscalculie", "mathématiques", "numération", "aménagement"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "La dyscalculie est un trouble spécifique qui affecte le sens du nombre, la compréhension des quantités et l'automatisation des faits arithmétiques. Elle n'est pas liée à une intelligence faible ni à un manque de travail — c'est une différence de traitement cérébral des informations numériques."
+      },
+      {
+        "type": "list",
+        "title": "Difficultés souvent observées",
+        "items": [
+          "Confusion entre chiffres visuellement proches (6/9, 2/5)",
+          "Difficulté à mémoriser les tables de multiplication malgré une répétition intense",
+          "Erreurs dans le positionnement des chiffres lors de la pose des opérations",
+          "Incapacité à estimer un ordre de grandeur (\"est-ce que 300 × 4 ≈ 1200 ou 12 000 ?\")",
+          "Lenteur importante même pour les calculs simples"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Adaptations et compensations",
+        "items": [
+          "Autoriser la calculatrice pour les calculs procéduraux afin de concentrer l'effort sur la compréhension",
+          "Mettre à disposition des aides-mémoire : tables, règles de calcul, bande numérique",
+          "Utiliser des manipulatifs concrets (cubes, réglettes Cuisenaire) pour ancrer les concepts",
+          "Écrire les étapes de résolution à l'horizontal pour éviter les erreurs d'alignement",
+          "Réduire le nombre d'exercices tout en maintenant la variété des situations"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "La mémorisation des tables de multiplication ne devrait pas être un objectif prioritaire pour un élève dyscalculique. Mieux vaut qu'il comprenne la relation multiplicative et utilise une aide-mémoire."
+      },
+      {
+        "type": "warning",
+        "content": "Évitez les exercices de calcul mental chronométrés : ils génèrent une anxiété mathématique durable qui aggrave les performances bien au-delà de la dyscalculie."
+      }
+    ]
+  },
+  {
+    "slug": "dyspraxie-adapter-les-activites",
+    "title": "Adapter les activités pour un élève dyspraxique",
+    "description": "Aménagements pratiques pour les activités graphomotrices, manuelles et sportives d'un élève avec dyspraxie.",
+    "category": "DYS",
+    "type": "fiche",
+    "estimatedReadTime": 8,
+    "tags": ["dyspraxie", "motricité fine", "écriture", "TAC"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "La dyspraxie (Trouble de l'Acquisition de la Coordination, TAC) est une difficulté à planifier, organiser et automatiser les gestes. L'élève doit consacrer une attention consciente à des tâches motrices que les autres effectuent automatiquement — écrire, découper, s'habiller, s'organiser dans l'espace."
+      },
+      {
+        "type": "list",
+        "title": "Difficultés visibles en classe",
+        "items": [
+          "Écriture lente, illisible, douloureuse — même après des années de pratique",
+          "Difficultés à tenir ses affaires organisées, à retrouver ses documents",
+          "Maladresse : renverse, casse, rate les cibles en EPS",
+          "Lenteur excessive à s'habiller, à ouvrir son sac, à ranger",
+          "Difficultés en géométrie (tracé avec règle et compas), bricolage, arts plastiques"
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Aménagements prioritaires",
+        "items": [
+          "Autoriser le clavier ou la tablette pour remplacer l'écriture manuscrite dès que possible",
+          "Fournir les cours polycopiés plutôt que d'exiger la prise de notes",
+          "Accorder un tiers temps systématiquement pour les évaluations et les travaux en classe",
+          "Structurer matériellement l'espace de travail : étiquettes, code couleur par matière, range-document",
+          "En EPS : proposer des variantes adaptées (ballon plus grand, distance réduite) plutôt qu'une dispense"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Si l'élève tape au clavier, un logiciel de prédiction de mots (Antidote, LanguageTool) compense aussi les difficultés orthographiques fréquemment associées à la dyspraxie."
+      }
+    ]
+  },
+  {
+    "slug": "tdi-comprendre-le-trouble",
+    "title": "Comprendre le Trouble Développemental de l'Intelligence",
+    "description": "Bases du TDI (anciennement déficience intellectuelle) : critères, niveaux et implications pour l'accompagnement scolaire.",
+    "category": "TDI",
+    "type": "guide",
+    "estimatedReadTime": 8,
+    "tags": ["TDI", "déficience intellectuelle", "diagnostic", "débutant"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "Le Trouble Développemental de l'Intelligence (TDI), anciennement appelé déficience intellectuelle, se caractérise par des limitations significatives du fonctionnement intellectuel et des comportements adaptatifs, survenant avant l'âge de 18 ans. Il n'est pas statique : avec un accompagnement adapté, les capacités adaptatives peuvent progresser tout au long de la vie."
+      },
+      {
+        "type": "list",
+        "title": "Les quatre niveaux de sévérité",
+        "items": [
+          "Léger (le plus fréquent, ~85% des cas) : apprentissages académiques possibles mais lents, autonomie partielle à l'âge adulte",
+          "Modéré : lecture et calcul basiques accessibles avec soutien intensif, autonomie supervisée",
+          "Sévère : communication fonctionnelle possible, forte dépendance pour les actes de la vie quotidienne",
+          "Profond : communication non verbale, besoins de soins constants"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Ce que le TDI n'est pas",
+        "items": [
+          "Un trouble unique et homogène — chaque personne a un profil de forces et de difficultés différent",
+          "Une limite fixe et immuable — le cerveau reste plastique et les apprentissages restent possibles",
+          "Synonyme de trouble du comportement — les comportements-défis sont souvent une réponse à un besoin non exprimé",
+          "Incompatible avec une vie riche, des relations sociales et un travail adapté"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Partez des forces : qu'est-ce que l'élève sait déjà faire, même partiellement ? Construire sur les réussites augmente la motivation et la confiance en soi bien plus efficacement que de travailler uniquement les déficits."
+      }
+    ]
+  },
+  {
+    "slug": "tdi-adapter-les-apprentissages",
+    "title": "Adapter les apprentissages pour un élève TDI",
+    "description": "Principes pédagogiques et stratégies concrètes pour rendre les apprentissages accessibles et progressifs.",
+    "category": "TDI",
+    "type": "guide",
+    "estimatedReadTime": 10,
+    "tags": ["TDI", "différenciation", "pédagogie", "apprentissage"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "Adapter les apprentissages pour un élève TDI ne signifie pas abaisser les attentes à zéro — cela signifie définir des objectifs à portée, fragmenter les étapes, et multiplier les modalités pour ancrer les acquisitions dans la durée."
+      },
+      {
+        "type": "list",
+        "title": "Principes fondamentaux",
+        "items": [
+          "Objectifs individualisés : travailler à partir du Plan d'Accompagnement Personnalisé (PAP) ou du PPS",
+          "Apprentissage par petits pas : décomposer chaque compétence en sous-étapes très courtes",
+          "Surapprentissage : répéter bien plus longtemps que pour un élève neurotypique pour consolider",
+          "Multisensorialité : combiner le visuel, l'oral, le tactile et le mouvement pour chaque concept nouveau",
+          "Transfert guidé : aider explicitement l'élève à transférer une compétence acquise à une nouvelle situation"
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Structurer une séquence d'apprentissage",
+        "items": [
+          "Définir UN seul objectif opérationnel par séance (\"l'élève sera capable de...'\")",
+          "Rappeler systématiquement les prérequis avant d'introduire le nouveau contenu",
+          "Présenter le concept avec un support visuel concret avant la version abstraite",
+          "Faire pratiquer immédiatement avec étayage, puis réduire progressivement l'aide",
+          "Terminer la séance par une réussite visible pour ancrer l'expérience positive"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Les pictogrammes ne sont pas réservés aux élèves non verbaux : des consignes illustrées aident tous les niveaux de TDI à comprendre ce qui est attendu sans surcharger la mémoire de travail."
+      },
+      {
+        "type": "warning",
+        "content": "Évitez les objectifs vagues (\"travailler l'autonomie\"). Préférez des objectifs mesurables (\"ranger seul son matériel en fin de séance 4 fois sur 5\"). Cela permet d'observer les progrès et d'adapter rapidement."
+      }
+    ]
+  },
+  {
+    "slug": "tdi-communication-et-autonomie",
+    "title": "Favoriser la communication et l'autonomie",
+    "description": "Outils et stratégies pour développer la communication fonctionnelle et l'autonomie dans les actes du quotidien.",
+    "category": "TDI",
+    "type": "outil",
+    "estimatedReadTime": 9,
+    "tags": ["autonomie", "communication", "vie quotidienne", "routine"],
+    "sections": [
+      {
+        "type": "text",
+        "content": "Pour les élèves TDI, développer la communication fonctionnelle et l'autonomie dans les actes du quotidien est souvent plus impactant à long terme que les apprentissages académiques. Ces deux domaines conditionnent la qualité de vie et l'inclusion sociale."
+      },
+      {
+        "type": "list",
+        "title": "Supports pour la communication fonctionnelle",
+        "items": [
+          "Pictogrammes ARASAAC pour exprimer les besoins de base (toilettes, faim, aide, douleur)",
+          "Classeur ou cahier de communication avec photos de l'environnement réel de l'élève",
+          "Cartes de choix (\"Tu veux la pomme ou le gâteau ?\") pour soutenir la prise de décision",
+          "Pictogrammes d'émotions pour nommer et réguler les états internes"
+        ]
+      },
+      {
+        "type": "steps",
+        "title": "Enseigner une routine d'autonomie (exemple : ranger son sac)",
+        "items": [
+          "Photographier chaque étape de la routine dans l'ordre",
+          "Plastifier les photos et les afficher en séquence à hauteur de l'élève",
+          "Guider physiquement les premières fois en commentant chaque étape",
+          "Réduire progressivement le guidage physique, passer aux gestes, puis aux mots",
+          "Valider chaque étape accomplie avec un signe ou une marque visible sur la séquence"
+        ]
+      },
+      {
+        "type": "list",
+        "title": "Domaines d'autonomie à travailler en priorité",
+        "items": [
+          "Hygiène de base : se laver les mains, utiliser les toilettes seul",
+          "Repas : utiliser des couverts, reconnaître ses affaires",
+          "Déplacements dans l'école : aller aux toilettes, rejoindre la cantine",
+          "Communication de besoins : demander de l'aide, signaler une douleur"
+        ]
+      },
+      {
+        "type": "tip",
+        "content": "Impliquez la famille dans les routines d'autonomie : une compétence acquise à l'école mais pas pratiquée à la maison se perd rapidement. Partagez les séquences photos avec les parents."
+      }
+    ]
+  }
+]
