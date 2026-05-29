@@ -7,30 +7,43 @@ import { cn } from "@/lib/utils";
 import type { ForumThread, ForumUserRole, ResourceCategory } from "@/types";
 import { createThread } from "@/app/(app)/forum/actions";
 
-const ROLE_COLORS: Record<ForumUserRole, string> = {
-  parent: "bg-blue-100 text-blue-800",
-  prof: "bg-green-100 text-green-800",
-  expert: "bg-purple-100 text-purple-800",
-};
-
 const ROLE_LABELS: Record<ForumUserRole, string> = {
   parent: "Parent",
-  prof: "Enseignant·e",
-  expert: "Expert·e",
+  prof: "Enseignant-e",
+  expert: "Expert-e",
 };
 
-const CATEGORY_COLORS: Record<ResourceCategory, string> = {
-  TDAH: "bg-orange-100 text-orange-700",
-  TSA: "bg-teal-100 text-teal-700",
-  DYS: "bg-pink-100 text-pink-700",
-  TDI: "bg-indigo-100 text-indigo-700",
+const ROLE_CAPSULE_BG: Record<ForumUserRole, string> = {
+  parent: "bg-rose-25",
+  prof: "bg-vert-25",
+  expert: "bg-bleu-25",
 };
 
-const CATEGORIES: ResourceCategory[] = ["TDAH", "TSA", "DYS", "TDI"];
+const CATEGORY_CAPSULE_BG: Record<ResourceCategory, string> = {
+  TSA: "bg-orange-25",
+  TDAH: "bg-rose-25",
+  DYS: "bg-bleu-25",
+  TDI: "bg-vert-25",
+};
+
+const CATEGORIES: ResourceCategory[] = ["TSA", "DYS", "TDAH", "TDI"];
 
 function formatDate(iso: string) {
   return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" }).format(
     new Date(iso),
+  );
+}
+
+function Capsule({ children, className }: { children: React.ReactNode; className?: string }) {
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center rounded-capsule px-2 py-[3px] text-[10px] font-semibold uppercase tracking-[0.06em] text-text-secondary",
+        className,
+      )}
+    >
+      {children}
+    </span>
   );
 }
 
@@ -43,16 +56,18 @@ export function Forum({ threads, userEmail }: ForumProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [activeCategory, setActiveCategory] = useState<ResourceCategory | "all">("all");
+  const [search, setSearch] = useState("");
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [category, setCategory] = useState<ResourceCategory>("TDAH");
+  const [category, setCategory] = useState<ResourceCategory>("TSA");
   const [authorName, setAuthorName] = useState(userEmail.split("@")[0]);
   const [authorRole, setAuthorRole] = useState<ForumUserRole>("parent");
   const [formError, setFormError] = useState<string | null>(null);
 
-  const filtered =
-    activeCategory === "all" ? threads : threads.filter((t) => t.category === activeCategory);
+  const filtered = threads
+    .filter((t) => activeCategory === "all" || t.category === activeCategory)
+    .filter((t) => !search || t.title.toLowerCase().includes(search.toLowerCase()));
 
   const pinned = filtered.filter((t) => t.isPinned);
   const regular = filtered.filter((t) => !t.isPinned);
@@ -79,50 +94,107 @@ export function Forum({ threads, userEmail }: ForumProps) {
   }
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <div className="mb-8 flex items-start justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Forum communautaire</h1>
-          <p className="mt-1 text-sm text-gray-500">
-            Échanges entre parents, enseignant·e·s et expert·e·s autour de la neurodivergence.
-          </p>
+    <div className="flex flex-col gap-8 px-4 py-8">
+      {/* Header */}
+      <div className="flex flex-col gap-2">
+        <h1 className="text-[28px] font-bold leading-[36px] tracking-[-0.003em] text-text-primary">
+          Forum
+        </h1>
+        <p className="text-[16px] font-normal leading-6 text-text-secondary">
+          Des conversations entre parents / enseignants / professionnels
+        </p>
+      </div>
+
+      {/* Controls */}
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-4">
+          {/* Search */}
+          <div className="flex flex-1 items-center gap-[10px] rounded-[14px] border border-border-default bg-surface px-4 py-3">
+            <span className="text-[16px] font-medium text-text-primary">⌕</span>
+            <input
+              type="text"
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Rechercher une discussion..."
+              className="flex-1 bg-transparent text-[14px] text-text-primary placeholder:text-text-muted outline-none"
+            />
+          </div>
+
+          {/* Category filter capsules */}
+          <div className="flex gap-[10px]">
+            {CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(activeCategory === cat ? "all" : cat)}
+                className={cn(
+                  "flex h-10 items-center justify-center rounded-capsule border px-2 text-[10px] font-semibold uppercase tracking-[0.06em] transition-colors",
+                  activeCategory === cat
+                    ? "border-brand-100 bg-bleu-25 text-brand"
+                    : "border-border bg-neutral-100 text-text-secondary hover:border-border-default",
+                )}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* CTA */}
         <button
           onClick={() => setShowForm(true)}
-          className="shrink-0 rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-80"
+          className="w-fit rounded-full bg-brand-100 px-6 py-4 font-display text-[16px] font-semibold leading-4 text-[#f4f4f7] transition-opacity hover:opacity-90"
         >
-          + Nouvelle discussion
+          Ouvrir une conversation
         </button>
       </div>
 
+      {/* Thread list */}
+      <div className="flex flex-col gap-3">
+        {[...pinned, ...regular].map((thread) => (
+          <ThreadCard key={thread.id} thread={thread} />
+        ))}
+        {filtered.length === 0 && (
+          <p className="py-12 text-center text-[14px] text-text-muted">
+            Aucune discussion pour l'instant.
+          </p>
+        )}
+      </div>
+
+      {/* Modal */}
       {showForm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-dark/40 px-4">
           <form
             onSubmit={handleSubmit}
-            className="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl"
+            className="w-full max-w-lg rounded-card bg-surface p-6 shadow-xl"
           >
-            <h2 className="mb-5 text-lg font-semibold text-gray-900">Ouvrir une conversation</h2>
+            <h2 className="mb-5 text-[22px] font-semibold text-text-primary">
+              Ouvrir une conversation
+            </h2>
 
             <div className="space-y-4">
               <div>
-                <label className="mb-1 block text-xs font-medium text-gray-500">Titre</label>
+                <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                  Titre
+                </label>
                 <input
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   required
                   placeholder="Ex : Comment gérer les crises sensorielles à l'école ?"
-                  className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:border-gray-400"
+                  className="w-full rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
                 />
               </div>
 
               <div className="flex gap-3">
                 <div className="flex-1">
-                  <label className="mb-1 block text-xs font-medium text-gray-500">Catégorie</label>
+                  <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                    Catégorie
+                  </label>
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value as ResourceCategory)}
-                    className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:border-gray-400"
+                    className="w-full rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
                   >
                     {CATEGORIES.map((c) => (
                       <option key={c} value={c}>{c}</option>
@@ -130,57 +202,63 @@ export function Forum({ threads, userEmail }: ForumProps) {
                   </select>
                 </div>
                 <div className="flex-1">
-                  <label className="mb-1 block text-xs font-medium text-gray-500">Votre rôle</label>
+                  <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                    Votre rôle
+                  </label>
                   <select
                     value={authorRole}
                     onChange={(e) => setAuthorRole(e.target.value as ForumUserRole)}
-                    className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:border-gray-400"
+                    className="w-full rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
                   >
                     <option value="parent">Parent</option>
-                    <option value="prof">Enseignant·e</option>
-                    <option value="expert">Expert·e</option>
+                    <option value="prof">Enseignant-e</option>
+                    <option value="expert">Expert-e</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-medium text-gray-500">Nom affiché</label>
+                <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                  Nom affiché
+                </label>
                 <input
                   type="text"
                   value={authorName}
                   onChange={(e) => setAuthorName(e.target.value)}
                   required
-                  className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:border-gray-400"
+                  className="w-full rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
                 />
               </div>
 
               <div>
-                <label className="mb-1 block text-xs font-medium text-gray-500">Message</label>
+                <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                  Message
+                </label>
                 <textarea
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   required
                   rows={5}
                   placeholder="Décrivez votre situation ou posez votre question..."
-                  className="w-full resize-none rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:border-gray-400"
+                  className="w-full resize-none rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
                 />
               </div>
 
-              {formError && <p className="text-sm text-red-600">{formError}</p>}
+              {formError && <p className="text-[14px] text-danger">{formError}</p>}
             </div>
 
             <div className="mt-6 flex justify-end gap-3">
               <button
                 type="button"
                 onClick={handleCancel}
-                className="rounded-md px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-100"
+                className="rounded-[8px] px-4 py-2 text-[14px] font-medium text-text-secondary hover:bg-background"
               >
                 Annuler
               </button>
               <button
                 type="submit"
                 disabled={isPending}
-                className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-80 disabled:opacity-40"
+                className="rounded-full bg-brand-100 px-5 py-2 font-display text-[16px] font-semibold text-[#f4f4f7] transition-opacity hover:opacity-90 disabled:opacity-40"
               >
                 {isPending ? "Publication…" : "Publier"}
               </button>
@@ -188,87 +266,31 @@ export function Forum({ threads, userEmail }: ForumProps) {
           </form>
         </div>
       )}
-
-      <div className="mb-6 flex flex-wrap gap-2">
-        <button
-          onClick={() => setActiveCategory("all")}
-          className={cn(
-            "rounded-full px-3 py-1 text-sm font-medium transition-colors",
-            activeCategory === "all"
-              ? "bg-gray-900 text-white"
-              : "bg-gray-100 text-gray-600 hover:bg-gray-200",
-          )}
-        >
-          Tous
-        </button>
-        {CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={cn(
-              "rounded-full px-3 py-1 text-sm font-medium transition-colors",
-              activeCategory === cat
-                ? "bg-gray-900 text-white"
-                : "bg-gray-100 text-gray-600 hover:bg-gray-200",
-            )}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      <div className="space-y-3">
-        {pinned.map((thread) => (
-          <ThreadCard key={thread.id} thread={thread} pinned />
-        ))}
-        {regular.map((thread) => (
-          <ThreadCard key={thread.id} thread={thread} />
-        ))}
-        {filtered.length === 0 && (
-          <p className="py-12 text-center text-sm text-gray-400">Aucun fil dans cette catégorie.</p>
-        )}
-      </div>
     </div>
   );
 }
 
-function ThreadCard({ thread, pinned }: { thread: ForumThread; pinned?: boolean }) {
+function ThreadCard({ thread }: { thread: ForumThread }) {
   return (
     <Link
       href={`/forum/${thread.id}`}
-      className={cn(
-        "block rounded-lg border bg-white px-5 py-4 transition-shadow hover:shadow-md",
-        pinned && "border-orange-200 bg-orange-50/30",
-      )}
+      className="flex flex-col gap-[10px] rounded-[14px] border border-border-default bg-surface p-4 transition-shadow hover:shadow-sm"
     >
-      <div className="mb-2 flex flex-wrap items-center gap-2">
-        {pinned && (
-          <span className="rounded-full bg-orange-100 px-2 py-0.5 text-xs font-medium text-orange-700">
-            Épinglé
-          </span>
-        )}
-        <span
-          className={cn(
-            "rounded-full px-2 py-0.5 text-xs font-medium",
-            CATEGORY_COLORS[thread.category],
-          )}
-        >
-          {thread.category}
-        </span>
-        <span
-          className={cn(
-            "rounded-full px-2 py-0.5 text-xs font-medium",
-            ROLE_COLORS[thread.author.role],
-          )}
-        >
+      <div className="flex flex-wrap items-center gap-[10px]">
+        <Capsule className={CATEGORY_CAPSULE_BG[thread.category]}>{thread.category}</Capsule>
+        <Capsule className={ROLE_CAPSULE_BG[thread.author.role]}>
           {ROLE_LABELS[thread.author.role]}
-        </span>
+        </Capsule>
       </div>
-      <p className="font-medium text-gray-900">{thread.title}</p>
-      <p className="mt-1 text-xs text-gray-400">
-        Par {thread.author.name} · {formatDate(thread.createdAt)} ·{" "}
-        {thread.replies.length} réponse{thread.replies.length !== 1 ? "s" : ""}
-      </p>
+      <div className="flex flex-col gap-2">
+        <p className="text-[18px] font-semibold leading-[26px] text-text-primary">
+          {thread.title}
+        </p>
+        <p className="text-[14px] font-normal leading-5 text-text-muted">
+          Par {thread.author.name} · {formatDate(thread.createdAt)} ·{" "}
+          {thread.replies.length} réponse{thread.replies.length !== 1 ? "s" : ""}
+        </p>
+      </div>
     </Link>
   );
 }

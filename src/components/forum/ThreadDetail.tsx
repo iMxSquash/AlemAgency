@@ -9,22 +9,23 @@ import { addReply } from "@/app/(app)/forum/actions";
 
 const ROLE_LABELS: Record<ForumUserRole, string> = {
   parent: "Parent",
-  prof: "Enseignant·e",
-  expert: "Expert·e",
+  prof: "Enseignant-e",
+  expert: "Expert-e",
 };
 
-const ROLE_COLORS: Record<ForumUserRole, string> = {
-  parent: "bg-blue-100 text-blue-800",
-  prof: "bg-green-100 text-green-800",
-  expert: "bg-purple-100 text-purple-800",
+const ROLE_CAPSULE_BG: Record<ForumUserRole, string> = {
+  parent: "bg-rose-25",
+  prof: "bg-vert-25",
+  expert: "bg-bleu-25",
 };
 
-const CATEGORY_COLORS: Record<ResourceCategory, string> = {
-  TDAH: "bg-orange-100 text-orange-700",
-  TSA: "bg-teal-100 text-teal-700",
-  DYS: "bg-pink-100 text-pink-700",
-  TDI: "bg-indigo-100 text-indigo-700",
+const CATEGORY_CAPSULE_BG: Record<ResourceCategory, string> = {
+  TSA: "bg-orange-25",
+  TDAH: "bg-rose-25",
+  DYS: "bg-bleu-25",
+  TDI: "bg-vert-25",
 };
+
 
 function formatDate(iso: string) {
   return new Intl.DateTimeFormat("fr-FR", {
@@ -36,33 +37,37 @@ function formatDate(iso: string) {
   }).format(new Date(iso));
 }
 
-function RoleBadge({ role }: { role: ForumUserRole }) {
+function Capsule({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
-    <span className={cn("rounded-full px-2 py-0.5 text-xs font-medium", ROLE_COLORS[role])}>
-      {ROLE_LABELS[role]}
+    <span
+      className={cn(
+        "inline-flex items-center rounded-capsule px-2 py-[3px] text-[10px] font-semibold uppercase tracking-[0.06em] text-text-secondary",
+        className,
+      )}
+    >
+      {children}
     </span>
   );
 }
 
 function ReplyCard({ reply }: { reply: ForumReply }) {
   return (
-    <div className="rounded-lg border border-gray-100 bg-gray-50 p-4">
-      <div className="mb-2 flex flex-wrap items-center gap-2">
-        <span className="text-sm font-medium text-gray-800">{reply.author.name}</span>
-        <RoleBadge role={reply.author.role} />
-        <span className="text-xs text-gray-400">{formatDate(reply.createdAt)}</span>
+    <div className="flex flex-col gap-[10px] rounded-[14px] border border-border bg-background p-4">
+      <div className="flex flex-wrap items-center gap-[10px]">
+        <span className="text-[14px] font-semibold leading-5 text-text-primary">
+          {reply.author.name}
+        </span>
+        <Capsule className={ROLE_CAPSULE_BG[reply.author.role]}>
+          {ROLE_LABELS[reply.author.role]}
+        </Capsule>
+        <span className="text-[12px] text-text-muted">{formatDate(reply.createdAt)}</span>
       </div>
-      <p className="text-sm leading-relaxed text-gray-700">{reply.content}</p>
+      <p className="text-[14px] font-normal leading-5 text-text-secondary">{reply.content}</p>
     </div>
   );
 }
 
-interface ReplyFormProps {
-  threadId: string;
-  userEmail: string;
-}
-
-function ReplyForm({ threadId, userEmail }: ReplyFormProps) {
+function ReplyForm({ threadId, userEmail }: { threadId: string; userEmail: string }) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [content, setContent] = useState("");
@@ -73,66 +78,69 @@ function ReplyForm({ threadId, userEmail }: ReplyFormProps) {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!content.trim()) return;
-
     setError(null);
     startTransition(async () => {
       const result = await addReply(threadId, { content, authorName, authorRole });
-      if (result.error) {
-        setError(result.error);
-        return;
-      }
+      if (result.error) { setError(result.error); return; }
       setContent("");
       router.refresh();
     });
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 rounded-lg border bg-white p-5">
-      <p className="font-medium text-gray-900">Ajouter une réponse</p>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 rounded-[14px] border border-border-default bg-surface p-4"
+    >
+      <p className="text-[18px] font-semibold leading-[26px] text-text-primary">
+        Ajouter une réponse
+      </p>
 
       <div className="flex gap-3">
         <div className="flex-1">
-          <label className="mb-1 block text-xs font-medium text-gray-500">Nom affiché</label>
+          <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+            Nom affiché
+          </label>
           <input
             type="text"
             value={authorName}
             onChange={(e) => setAuthorName(e.target.value)}
             required
-            className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:border-gray-400"
+            className="w-full rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
           />
         </div>
         <div>
-          <label className="mb-1 block text-xs font-medium text-gray-500">Rôle</label>
+          <label className="mb-1 block text-[12px] font-medium text-text-secondary">Rôle</label>
           <select
             value={authorRole}
             onChange={(e) => setAuthorRole(e.target.value as ForumUserRole)}
-            className="rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:border-gray-400"
+            className="rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
           >
             <option value="parent">Parent</option>
-            <option value="prof">Enseignant·e</option>
-            <option value="expert">Expert·e</option>
+            <option value="prof">Enseignant-e</option>
+            <option value="expert">Expert-e</option>
           </select>
         </div>
       </div>
 
       <div>
-        <label className="mb-1 block text-xs font-medium text-gray-500">Message</label>
+        <label className="mb-1 block text-[12px] font-medium text-text-secondary">Message</label>
         <textarea
           value={content}
           onChange={(e) => setContent(e.target.value)}
           required
           rows={4}
           placeholder="Partagez votre expérience ou conseil..."
-          className="w-full resize-none rounded-md border border-gray-200 px-3 py-2 text-sm outline-none focus:border-gray-400"
+          className="w-full resize-none rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
         />
       </div>
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-[14px] text-danger">{error}</p>}
 
       <button
         type="submit"
         disabled={isPending || !content.trim()}
-        className="rounded-md bg-gray-900 px-4 py-2 text-sm font-medium text-white transition-opacity hover:opacity-80 disabled:opacity-40"
+        className="w-fit rounded-full bg-brand-100 px-5 py-2 font-display text-[16px] font-semibold text-[#f4f4f7] transition-opacity hover:opacity-90 disabled:opacity-40"
       >
         {isPending ? "Envoi…" : "Répondre"}
       </button>
@@ -152,33 +160,37 @@ export function ThreadDetail({ thread, dbReplies, userEmail }: ThreadDetailProps
   );
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <Link href="/forum" className="mb-6 inline-flex items-center gap-1 text-sm text-gray-400 hover:text-gray-700">
+    <div className="flex flex-col gap-8 px-4 py-8">
+      <Link
+        href="/forum"
+        className="w-fit text-[14px] text-text-muted hover:text-text-secondary"
+      >
         ← Retour au forum
       </Link>
 
-      <div className="mb-8 rounded-lg border bg-white px-6 py-5">
-        <div className="mb-3 flex flex-wrap items-center gap-2">
-          <span
-            className={cn(
-              "rounded-full px-2 py-0.5 text-xs font-medium",
-              CATEGORY_COLORS[thread.category],
-            )}
-          >
-            {thread.category}
-          </span>
-          <RoleBadge role={thread.author.role} />
+      {/* Thread */}
+      <div className="flex flex-col gap-[10px] rounded-[14px] border border-border-default bg-surface p-4">
+        <div className="flex flex-wrap items-center gap-[10px]">
+          <Capsule className={CATEGORY_CAPSULE_BG[thread.category]}>{thread.category}</Capsule>
+          <Capsule className={ROLE_CAPSULE_BG[thread.author.role]}>
+            {ROLE_LABELS[thread.author.role]}
+          </Capsule>
         </div>
-        <h1 className="text-xl font-bold text-gray-900">{thread.title}</h1>
-        <p className="mt-1 text-xs text-gray-400">
-          Par {thread.author.name} · {formatDate(thread.createdAt)}
-        </p>
-        <p className="mt-4 text-sm leading-relaxed text-gray-700">{thread.content}</p>
+        <div className="flex flex-col gap-2">
+          <h1 className="text-[28px] font-bold leading-[36px] tracking-[-0.003em] text-text-primary">
+            {thread.title}
+          </h1>
+          <p className="text-[14px] font-normal leading-5 text-text-muted">
+            {thread.author.name} · {formatDate(thread.createdAt)}
+          </p>
+        </div>
+        <p className="text-[14px] font-normal leading-5 text-text-secondary">{thread.content}</p>
       </div>
 
-      <div className="mb-6 space-y-4">
+      {/* Replies */}
+      <div className="flex flex-col gap-3">
         {allReplies.length > 0 && (
-          <p className="text-xs font-semibold uppercase tracking-wide text-gray-400">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.06em] text-text-muted">
             {allReplies.length} réponse{allReplies.length !== 1 ? "s" : ""}
           </p>
         )}
@@ -186,7 +198,7 @@ export function ThreadDetail({ thread, dbReplies, userEmail }: ThreadDetailProps
           <ReplyCard key={reply.id} reply={reply} />
         ))}
         {allReplies.length === 0 && (
-          <p className="py-4 text-center text-sm text-gray-400">
+          <p className="py-6 text-center text-[14px] text-text-muted">
             Aucune réponse pour l'instant — soyez le premier·e à contribuer.
           </p>
         )}
