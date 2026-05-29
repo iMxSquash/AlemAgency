@@ -31,3 +31,29 @@ export type Resource = {
   tags: string[];
   sections: ContentSection[];
 };
+
+export type ForumUserRole = "parent" | "prof" | "expert";
+
+export type ForumAuthor = {
+  id: string;
+  name: string;
+  role: ForumUserRole;
+};
+
+export type ForumReply = {
+  id: string;
+  author: ForumAuthor;
+  content: string;
+  createdAt: string;
+};
+
+export type ForumThread = {
+  id: string;
+  title: string;
+  content: string;
+  category: ResourceCategory;
+  author: ForumAuthor;
+  replies: ForumReply[];
+  createdAt: string;
+  isPinned?: boolean;
+};

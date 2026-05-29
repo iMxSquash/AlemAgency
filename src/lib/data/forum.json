@@ -1,0 +1,222 @@
+[
+  {
+    "id": "thread-1",
+    "title": "Mon fils (9 ans, TDAH) n'arrive pas à rester assis plus de 10 minutes — comment gérez-vous ça en classe ?",
+    "content": "Bonjour à tous. Mon fils Théo a été diagnostiqué TDAH inattentif il y a 6 mois. En classe, son enseignante se plaint qu'il se lève constamment, distrait ses camarades. À la maison c'est pareil pour les devoirs. Nous avons essayé les petites pauses toutes les 20 min mais ça ne change pas grand chose. Est-ce que certains d'entre vous ont trouvé quelque chose qui marche vraiment ?",
+    "category": "TDAH",
+    "author": { "id": "u1", "name": "Marie Dupont", "role": "parent" },
+    "createdAt": "2026-05-10T09:15:00Z",
+    "isPinned": true,
+    "replies": [
+      {
+        "id": "r1-1",
+        "author": { "id": "u2", "name": "Sophie Leroux", "role": "prof" },
+        "content": "Bonjour Marie. Dans ma classe j'ai mis en place un \"coin debout\" : un pupitre surélevé où l'élève peut travailler debout. Ça change tout pour les enfants TDAH hyperactifs. Aussi, les tâches courtes (5-7 min) avec une mini-récompense visuelle (barre de progression) aident beaucoup plus que les pauses à heure fixe.",
+        "createdAt": "2026-05-10T11:32:00Z"
+      },
+      {
+        "id": "r1-2",
+        "author": { "id": "u3", "name": "Dr. Karim Benali", "role": "expert" },
+        "content": "La recherche montre que pour le TDAH inattentif, ce ne sont pas les pauses qui manquent mais la stimulation. Je recommande souvent les coussins d'assise à picots ou les balles anti-stress à manipuler — ça occupe la motricité fine et libère la concentration cognitive. Pour les devoirs à la maison, la règle des 15/5 est plus efficace : 15 min de travail intense, 5 min de mouvement libre (pas d'écrans).",
+        "createdAt": "2026-05-10T14:00:00Z"
+      },
+      {
+        "id": "r1-3",
+        "author": { "id": "u4", "name": "Nathalie Moreau", "role": "parent" },
+        "content": "On a la même situation avec notre fille (8 ans). Ce qui a vraiment aidé c'est le minuteur visuel Time Timer — elle voit le temps qui passe et ça l'aide à se projeter. Et on a demandé une place en bout de rangée pour qu'elle puisse s'étirer sans déranger les autres.",
+        "createdAt": "2026-05-11T08:45:00Z"
+      }
+    ]
+  },
+  {
+    "id": "thread-2",
+    "title": "Ressources pour expliquer le TSA à une classe de CM1 — retour d'expérience",
+    "content": "Je suis enseignante en CM1 et j'ai un élève avec TSA niveau 1 qui rejoint ma classe à la rentrée prochaine. Je veux préparer mes autres élèves à l'accueillir dans de bonnes conditions, sans le pointer du doigt. Est-ce que vous avez des livres, vidéos ou activités adaptés à des enfants de 9-10 ans ?",
+    "category": "TSA",
+    "author": { "id": "u2", "name": "Sophie Leroux", "role": "prof" },
+    "createdAt": "2026-05-12T10:00:00Z",
+    "isPinned": false,
+    "replies": [
+      {
+        "id": "r2-1",
+        "author": { "id": "u5", "name": "Isabelle Fontaine", "role": "expert" },
+        "content": "Bonjour Sophie. Je suis orthophoniste et j'interviens régulièrement en classes inclusives. Pour des CM1, le livre \"Différent comme moi\" de Jennifer Elder est parfait — il présente des personnages historiques autistes de manière positive. En vidéo, la série \"Pablo\" sur Netflix est accessible et très bien faite. Pour l'activité, je propose souvent un atelier \"les cerveaux différents\" où les enfants découvrent que tout le monde perçoit le monde différemment.",
+        "createdAt": "2026-05-12T13:20:00Z"
+      },
+      {
+        "id": "r2-2",
+        "author": { "id": "u6", "name": "Pierre Martin", "role": "parent" },
+        "content": "Papa d'un enfant TSA scolarisé en inclusion depuis 3 ans. Ce qui a le plus aidé dans la classe de mon fils, c'est quand la maîtresse a expliqué les \"besoins sensoriels\" sans mentionner l'autisme directement — juste \"certaines personnes ont besoin de calme pour bien travailler, comme certains ont besoin de lunettes pour bien voir\". Ça a créé de l'empathie naturelle.",
+        "createdAt": "2026-05-12T16:05:00Z"
+      },
+      {
+        "id": "r2-3",
+        "author": { "id": "u2", "name": "Sophie Leroux", "role": "prof" },
+        "content": "Merci à tous les deux, ces ressources sont exactement ce que je cherchais. Je vais commencer par l'analogie des lunettes, c'est très parlant pour les enfants de cet âge.",
+        "createdAt": "2026-05-13T08:10:00Z"
+      }
+    ]
+  },
+  {
+    "id": "thread-3",
+    "title": "Dyslexie sévère et lecture — quels outils numériques en 2026 ?",
+    "content": "Ma fille Léa (11 ans) a une dyslexie sévère diagnostiquée en CE2. Elle est maintenant en 6e et les volumes de texte explosent. On utilise déjà la synthèse vocale sur sa tablette mais ça ne couvre pas tout (examens papier, annotations...). Quels outils numériques ou adaptations avez-vous trouvés vraiment utiles pour le collège ?",
+    "category": "DYS",
+    "author": { "id": "u7", "name": "Thomas Lefevre", "role": "parent" },
+    "createdAt": "2026-05-14T07:30:00Z",
+    "isPinned": false,
+    "replies": [
+      {
+        "id": "r3-1",
+        "author": { "id": "u8", "name": "Dr. Claire Rousseau", "role": "expert" },
+        "content": "Pour la 6e avec dyslexie sévère, voici ce que je recommande systématiquement : 1) Police OpenDyslexic ou Lexie Readable sur tous les documents numériques, 2) Outil Snap&Read pour OCR + lecture des cours papier via photo, 3) Logiciel Antidote pour la correction, 4) Demandez au collège un PPS avec tiers-temps ET secrétaire pour les examens. Pour les révisions, les cartes mentales (MindMeister) remplacent avantageusement les fiches textuelles.",
+        "createdAt": "2026-05-14T09:45:00Z"
+      },
+      {
+        "id": "r3-2",
+        "author": { "id": "u9", "name": "Julien Marchand", "role": "prof" },
+        "content": "Enseignant de français en collège. On a eu une réunion de formation sur les dys l'année dernière. Ce qui change vraiment la donne pour mes élèves dys : textes en police 14 minimum avec interligne 1.5, pas de fond blanc pur (beige ou jaune pâle), et surtout évaluer l'oral autant que l'écrit quand c'est possible. Pour Léa spécifiquement, demandez à rencontrer le référent handicap du collège dès septembre.",
+        "createdAt": "2026-05-14T11:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": "thread-4",
+    "title": "Comment gérer les crises sensorielles en sortie scolaire ?",
+    "content": "Je suis AESH d'un élève TSA niveau 2 en CE2. Les sorties scolaires sont souvent problématiques — bruit, foule, lumières — et il peut avoir des crises importantes loin de la classe. Les autres enseignants ne savent pas toujours comment réagir et parfois ça empire la situation. Je cherche un protocole clair que je pourrais partager avec l'équipe.",
+    "category": "TSA",
+    "author": { "id": "u10", "name": "Amandine Petit", "role": "prof" },
+    "createdAt": "2026-05-15T14:00:00Z",
+    "isPinned": false,
+    "replies": [
+      {
+        "id": "r4-1",
+        "author": { "id": "u5", "name": "Isabelle Fontaine", "role": "expert" },
+        "content": "Protocole que j'utilise en formation AESH : 1) Ne jamais toucher sans prévenir (\"je vais poser ma main sur ton épaule\"), 2) Voix basse, phrases courtes (\"C'est calme. Tu es en sécurité.\"), 3) Proposer l'espace : se reculer du groupe si possible, 4) Objet transitionnel — demandez aux parents ce qu'il a toujours avec lui, 5) Ne jamais forcer le contact visuel pendant une crise. Après : 10-15 min de récupération minimum avant de reprendre l'activité.",
+        "createdAt": "2026-05-15T16:30:00Z"
+      },
+      {
+        "id": "r4-2",
+        "author": { "id": "u6", "name": "Pierre Martin", "role": "parent" },
+        "content": "Parent de ce côté-là. Ce qui m'aiderait énormément c'est que l'AESH puisse m'envoyer un SMS rapide quand une crise débute — pas pour que j'arrive, mais pour que je puisse donner des infos en temps réel sur ce qui peut calmer mon fils ce jour-là. Chaque crise est différente selon son état de fatigue, sa journée... On pourrait établir une fiche de contact rapide ?",
+        "createdAt": "2026-05-16T08:20:00Z"
+      },
+      {
+        "id": "r4-3",
+        "author": { "id": "u3", "name": "Dr. Karim Benali", "role": "expert" },
+        "content": "La suggestion de Pierre est excellente du point de vue clinique. On appelle ça le \"passeport sensoriel\" — un document d'une page max créé avec les parents qui liste : déclencheurs connus, signaux d'alerte précoces, stratégies qui fonctionnent, et celles à éviter. C'est différent du PAP scolaire car il est opérationnel, pas administratif. Je peux partager un modèle vierge si vous le souhaitez.",
+        "createdAt": "2026-05-16T10:00:00Z"
+      },
+      {
+        "id": "r4-4",
+        "author": { "id": "u10", "name": "Amandine Petit", "role": "prof" },
+        "content": "Oui Dr. Benali, le modèle de passeport sensoriel serait parfait ! Et l'idée du SMS parents est très bonne Pierre, je vais proposer ça à l'équipe. Merci à tous les deux.",
+        "createdAt": "2026-05-16T11:45:00Z"
+      }
+    ]
+  },
+  {
+    "id": "thread-5",
+    "title": "TDAH et devoirs du soir — rituels qui marchent pour votre famille ?",
+    "content": "Chaque soir c'est la guerre pour les devoirs avec mon fils de 10 ans (TDAH combiné). Cris, larmes, procrastination... Il rentre de l'école épuisé et il faut encore sortir les cahiers. On a essayé différentes heures mais rien ne tient. Comment vous organisez-vous ?",
+    "category": "TDAH",
+    "author": { "id": "u4", "name": "Nathalie Moreau", "role": "parent" },
+    "createdAt": "2026-05-17T19:00:00Z",
+    "isPinned": false,
+    "replies": [
+      {
+        "id": "r5-1",
+        "author": { "id": "u3", "name": "Dr. Karim Benali", "role": "expert" },
+        "content": "Le problème est neurologique : après une journée scolaire, le cortex préfrontal (déjà moins efficace chez les TDAH) est en surcharge. Je recommande un \"sas de décompression\" de 45-60 min après l'école avant tout devoir : goûter, jeu libre non-structuré, mouvement. Puis les devoirs en 2 blocs de 15 min avec 10 min de mouvement entre les deux. L'environnement compte aussi : bureau dégagé, casque anti-bruit si besoin, écrans hors de vue.",
+        "createdAt": "2026-05-17T21:15:00Z"
+      },
+      {
+        "id": "r5-2",
+        "author": { "id": "u2", "name": "Sophie Leroux", "role": "prof" },
+        "content": "De mon côté d'enseignante, je note les devoirs dans un ordre précis sur l'agenda : d'abord ce qui est fait rapidement (pour la satisfaction du check ✓), puis le plus difficile. Ça donne un sentiment de progrès dès le départ. Vous pouvez demander à son prof de faire pareil — c'est une adaptation simple qui ne coûte rien.",
+        "createdAt": "2026-05-18T07:00:00Z"
+      },
+      {
+        "id": "r5-3",
+        "author": { "id": "u11", "name": "Clara Vignon", "role": "parent" },
+        "content": "Ce qui a tout changé pour nous : les devoirs à la bibliothèque municipale 3 soirs par semaine. Loin de la maison (donc moins de distractions familiales), ambiance studieuse naturelle, et mon fils ressent moins la pression parentale. Ça a réduit les conflits de 90%. Bonus : il y a une animatrice qui l'aide quand je ne peux pas.",
+        "createdAt": "2026-05-18T10:30:00Z"
+      }
+    ]
+  },
+  {
+    "id": "thread-6",
+    "title": "Bilan neuropsychologique : comment bien le préparer et l'interpréter ?",
+    "content": "Notre pédopsychiatre nous a orientés vers un bilan neuropsychologique pour notre fille de 7 ans (suspicion TDAH + dys). On a un rendez-vous dans 3 mois. Comment préparer l'enfant ? Quelles questions poser au neuropsychologue ? Comment ensuite utiliser les résultats avec l'école ?",
+    "category": "DYS",
+    "author": { "id": "u1", "name": "Marie Dupont", "role": "parent" },
+    "createdAt": "2026-05-19T08:00:00Z",
+    "isPinned": false,
+    "replies": [
+      {
+        "id": "r6-1",
+        "author": { "id": "u8", "name": "Dr. Claire Rousseau", "role": "expert" },
+        "content": "Je suis neuropsychologue, donc je peux répondre précisément. Pour préparer l'enfant : dites-lui que c'est des \"jeux de cerveau\" pour mieux comprendre comment elle apprend — pas un test scolaire. Pas de mise en pression. Questions clés à poser : le profil cognitif détaillé (pas juste le score global), les points forts à appuyer, et demandez un compte-rendu en langage accessible. Pour l'école : apportez le rapport complet au directeur dès réception — il permet de déclencher un PAP ou PPS selon les résultats.",
+        "createdAt": "2026-05-19T10:30:00Z"
+      },
+      {
+        "id": "r6-2",
+        "author": { "id": "u9", "name": "Julien Marchand", "role": "prof" },
+        "content": "Côté enseignant, ce qui m'est le plus utile dans un compte-rendu de bilan c'est la partie \"recommandations pédagogiques concrètes\" — pas les scores, mais \"préférer les consignes orales\", \"laisser l'usage de la calculatrice\", etc. Demandez explicitement que cette section soit rédigée pour les enseignants, certains neuropsychologues le font de base, d'autres non.",
+        "createdAt": "2026-05-19T14:00:00Z"
+      }
+    ]
+  },
+  {
+    "id": "thread-7",
+    "title": "TDI et relations sociales à l'école — accompagner sans surprotéger",
+    "content": "Ma fille (10 ans, TDI léger) a du mal à lire les codes sociaux. Elle se fait régulièrement exclure des jeux sans comprendre pourquoi. À la maison on joue aux jeux de rôle pour pratiquer les situations sociales mais je ne sais pas si c'est suffisant. Y a-t-il des groupes d'habiletés sociales accessibles ?",
+    "category": "TDI",
+    "author": { "id": "u12", "name": "Éric Blanchard", "role": "parent" },
+    "createdAt": "2026-05-20T11:00:00Z",
+    "isPinned": false,
+    "replies": [
+      {
+        "id": "r7-1",
+        "author": { "id": "u5", "name": "Isabelle Fontaine", "role": "expert" },
+        "content": "Les groupes d'habiletés sociales (GHS) sont très efficaces pour les enfants TDI. On en trouve dans les CMP (Centres Médico-Psychologiques), les CMPP, et parfois en libéral. Cherchez \"GHS enfants\" + votre ville. Le programme PEHP (Programme d'Entraînement aux Habiletés Parentales) peut aussi vous aider vous en tant que parents à mieux coacher les situations sociales sans surprotéger. Les jeux de rôle que vous faites à la maison sont une excellente base — continuez !",
+        "createdAt": "2026-05-20T14:30:00Z"
+      },
+      {
+        "id": "r7-2",
+        "author": { "id": "u2", "name": "Sophie Leroux", "role": "prof" },
+        "content": "En classe j'utilise les \"cercles d'amitié\" — un exercice où on définit ensemble qui sont nos proches, nos amis, nos connaissances. Ça aide les enfants TDI à cartographier les relations. Je travaille aussi avec un pair-tuteur volontaire à la récré pour les premières semaines. Si vous voulez je peux vous envoyer la fiche d'activité, vous pourriez la partager avec l'enseignante de votre fille.",
+        "createdAt": "2026-05-21T08:45:00Z"
+      }
+    ]
+  },
+  {
+    "id": "thread-8",
+    "title": "Annoncer le diagnostic à son enfant — à quel âge et comment ?",
+    "content": "Notre fils de 8 ans a été diagnostiqué TSA niveau 1 il y a 2 mois. On hésite à lui en parler directement. D'un côté il remarque qu'il est \"différent\", de l'autre on ne veut pas lui coller une étiquette. Comment avez-vous abordé le sujet avec votre enfant ?",
+    "category": "TSA",
+    "author": { "id": "u13", "name": "Lucie Bernard", "role": "parent" },
+    "createdAt": "2026-05-22T16:00:00Z",
+    "isPinned": false,
+    "replies": [
+      {
+        "id": "r8-1",
+        "author": { "id": "u3", "name": "Dr. Karim Benali", "role": "expert" },
+        "content": "8 ans c'est un âge idéal pour une annonce adaptée. L'enfant est capable d'abstraction mais pas encore dans les enjeux identitaires de l'adolescence. Ce que je recommande : utilisez le mot \"autisme\" (pas des métaphores — ça crée de la confusion plus tard), cadrez-le positivement (\"ton cerveau fonctionne différemment, et on va apprendre ensemble comment tirer le meilleur parti de ça\"), et laissez-lui poser des questions sur plusieurs semaines. Le livre \"Je suis différent, pas moins\" de Temple Grandin est excellent pour cet âge.",
+        "createdAt": "2026-05-22T18:30:00Z"
+      },
+      {
+        "id": "r8-2",
+        "author": { "id": "u6", "name": "Pierre Martin", "role": "parent" },
+        "content": "On a annoncé le diagnostic de notre fils à 9 ans. Ce qui a bien fonctionné : on a d'abord listé avec lui toutes ses forces (mémoire incroyable, passion pour les dinosaures, honnêteté...) avant d'expliquer les difficultés. Il a répondu \"ah, donc c'est pour ça que les récrés c'est compliqué\" — il le savait déjà intuitivement. Donner un nom à ce qu'il vivait l'a soulagé, pas enfermé.",
+        "createdAt": "2026-05-23T09:15:00Z"
+      },
+      {
+        "id": "r8-3",
+        "author": { "id": "u14", "name": "Margaux Delorme", "role": "prof" },
+        "content": "Je confirme ce que dit Pierre — dans ma classe, les enfants qui connaissent leur diagnostic s'auto-régulent beaucoup mieux car ils ont des mots pour demander de l'aide (\"j'ai besoin d'un moment au calme\"). Ceux qui ne le savent pas cherchent souvent à \"faire comme les autres\" ce qui génère une fatigue énorme. L'étiquette fait peur aux adultes, rarement aux enfants eux-mêmes.",
+        "createdAt": "2026-05-23T11:00:00Z"
+      }
+    ]
+  }
+]
