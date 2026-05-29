@@ -33,20 +33,32 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  const isAuthRoute =
-    request.nextUrl.pathname.startsWith("/login") ||
-    request.nextUrl.pathname.startsWith("/signup") ||
-    request.nextUrl.pathname.startsWith("/auth/callback");
+  const { pathname } = request.nextUrl;
 
-  if (!user && !isAuthRoute && request.nextUrl.pathname.startsWith("/dashboard")) {
+  // Routes publiques uniquement (rediriger vers /bibliotheque si déjà connecté)
+  const isGuestOnlyRoute =
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/signup") ||
+    pathname.startsWith("/login") ||
+    pathname.startsWith("/signup");
+
+  // Routes protégées (rediriger vers /login si non connecté)
+  const isProtectedRoute =
+    pathname.startsWith("/bibliotheque") ||
+    pathname.startsWith("/mes-fiches") ||
+    pathname.startsWith("/dashboard");
+
+  const isAuthCallback = pathname.startsWith("/auth/callback");
+
+  if (!user && isProtectedRoute) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);
   }
 
-  if (user && isAuthRoute) {
+  if (user && isGuestOnlyRoute && !isAuthCallback) {
     const url = request.nextUrl.clone();
-    url.pathname = "/dashboard";
+    url.pathname = "/bibliotheque";
     return NextResponse.redirect(url);
   }
 
