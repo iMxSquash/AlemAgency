@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
-import { useState, useTransition } from "react";
-import { useRouter } from "next/navigation";
+import { createThread } from "@/app/(app)/forum/actions";
 import { cn } from "@/lib/utils";
 import type { ForumThread, ForumUserRole, ResourceCategory } from "@/types";
-import { createThread } from "@/app/(app)/forum/actions";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState, useTransition } from "react";
 
 const ROLE_LABELS: Record<ForumUserRole, string> = {
   parent: "Parent",
@@ -29,9 +29,11 @@ const CATEGORY_CAPSULE_BG: Record<ResourceCategory, string> = {
 const CATEGORIES: ResourceCategory[] = ["TSA", "DYS", "TDAH", "TDI"];
 
 function formatDate(iso: string) {
-  return new Intl.DateTimeFormat("fr-FR", { day: "numeric", month: "long", year: "numeric" }).format(
-    new Date(iso),
-  );
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(iso));
 }
 
 function Capsule({ children, className }: { children: React.ReactNode; className?: string }) {
@@ -39,7 +41,7 @@ function Capsule({ children, className }: { children: React.ReactNode; className
     <span
       className={cn(
         "inline-flex items-center rounded-capsule px-2 py-[3px] text-[10px] font-semibold uppercase tracking-[0.06em] text-text-secondary",
-        className,
+        className
       )}
     >
       {children}
@@ -89,7 +91,7 @@ export function Forum({ threads, userEmail }: ForumProps) {
         return;
       }
       handleCancel();
-      router.push(`/forum/${result.data!.id}`);
+      router.push(`/forum/${result.data?.id}`);
     });
   }
 
@@ -126,12 +128,13 @@ export function Forum({ threads, userEmail }: ForumProps) {
               {CATEGORIES.map((cat) => (
                 <button
                   key={cat}
+                  type="button"
                   onClick={() => setActiveCategory(activeCategory === cat ? "all" : cat)}
                   className={cn(
                     "flex h-10 shrink-0 items-center justify-center rounded-capsule border px-3 text-[10px] font-semibold uppercase tracking-[0.06em] transition-colors",
                     activeCategory === cat
                       ? "border-brand-100 bg-bleu-25 text-brand"
-                      : "border-border bg-neutral-100 text-text-secondary hover:border-border-default",
+                      : "border-border bg-neutral-100 text-text-secondary hover:border-border-default"
                   )}
                 >
                   {cat}
@@ -143,6 +146,7 @@ export function Forum({ threads, userEmail }: ForumProps) {
 
         {/* CTA */}
         <button
+          type="button"
           onClick={() => setShowForm(true)}
           className="w-fit rounded-full bg-brand-100 px-6 py-4 font-display text-[16px] font-semibold leading-4 text-[#f4f4f7] transition-opacity hover:opacity-90"
         >
@@ -175,10 +179,14 @@ export function Forum({ threads, userEmail }: ForumProps) {
 
             <div className="space-y-4">
               <div>
-                <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                <label
+                  htmlFor="thread-title"
+                  className="mb-1 block text-[12px] font-medium text-text-secondary"
+                >
                   Titre
                 </label>
                 <input
+                  id="thread-title"
                   type="text"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
@@ -190,24 +198,34 @@ export function Forum({ threads, userEmail }: ForumProps) {
 
               <div className="flex gap-3">
                 <div className="flex-1">
-                  <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                  <label
+                    htmlFor="thread-category"
+                    className="mb-1 block text-[12px] font-medium text-text-secondary"
+                  >
                     Catégorie
                   </label>
                   <select
+                    id="thread-category"
                     value={category}
                     onChange={(e) => setCategory(e.target.value as ResourceCategory)}
                     className="w-full rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
                   >
                     {CATEGORIES.map((c) => (
-                      <option key={c} value={c}>{c}</option>
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
                     ))}
                   </select>
                 </div>
                 <div className="flex-1">
-                  <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                  <label
+                    htmlFor="thread-role"
+                    className="mb-1 block text-[12px] font-medium text-text-secondary"
+                  >
                     Votre rôle
                   </label>
                   <select
+                    id="thread-role"
                     value={authorRole}
                     onChange={(e) => setAuthorRole(e.target.value as ForumUserRole)}
                     className="w-full rounded-[8px] border border-border-default bg-background px-3 py-2 text-[14px] text-text-primary outline-none focus:border-brand"
@@ -220,10 +238,14 @@ export function Forum({ threads, userEmail }: ForumProps) {
               </div>
 
               <div>
-                <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                <label
+                  htmlFor="thread-author"
+                  className="mb-1 block text-[12px] font-medium text-text-secondary"
+                >
                   Nom affiché
                 </label>
                 <input
+                  id="thread-author"
                   type="text"
                   value={authorName}
                   onChange={(e) => setAuthorName(e.target.value)}
@@ -233,10 +255,14 @@ export function Forum({ threads, userEmail }: ForumProps) {
               </div>
 
               <div>
-                <label className="mb-1 block text-[12px] font-medium text-text-secondary">
+                <label
+                  htmlFor="thread-content"
+                  className="mb-1 block text-[12px] font-medium text-text-secondary"
+                >
                   Message
                 </label>
                 <textarea
+                  id="thread-content"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   required
@@ -285,12 +311,10 @@ function ThreadCard({ thread }: { thread: ForumThread }) {
         </Capsule>
       </div>
       <div className="flex flex-col gap-2">
-        <p className="text-[18px] font-semibold leading-[26px] text-text-primary">
-          {thread.title}
-        </p>
+        <p className="text-[18px] font-semibold leading-[26px] text-text-primary">{thread.title}</p>
         <p className="text-[14px] font-normal leading-5 text-text-muted">
-          Par {thread.author.name} · {formatDate(thread.createdAt)} ·{" "}
-          {thread.replies.length} réponse{thread.replies.length !== 1 ? "s" : ""}
+          Par {thread.author.name} · {formatDate(thread.createdAt)} · {thread.replies.length}{" "}
+          réponse{thread.replies.length !== 1 ? "s" : ""}
         </p>
       </div>
     </Link>
