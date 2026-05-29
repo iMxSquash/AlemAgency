@@ -1,11 +1,11 @@
-import { notFound, redirect } from "next/navigation";
+import categoriesData from "@/lib/data/categories.json";
+import resourcesData from "@/lib/data/resources.json";
 import { createClient } from "@/lib/supabase/server";
 import type { ContentSection, Resource } from "@/types";
-import resourcesData from "@/lib/data/resources.json";
-import categoriesData from "@/lib/data/categories.json";
-import { saveResource, markAsCompleted } from "./actions";
-import { SaveButton } from "./SaveButton";
+import { notFound, redirect } from "next/navigation";
 import { CompleteButton } from "./CompleteButton";
+import { SaveButton } from "./SaveButton";
+import { markAsCompleted, saveResource } from "./actions";
 
 const resources = resourcesData as Resource[];
 
@@ -17,12 +17,10 @@ function Section({ section }: { section: ContentSection }) {
     case "list":
       return (
         <div>
-          {section.title && (
-            <h3 className="mb-2 font-semibold text-gray-900">{section.title}</h3>
-          )}
+          {section.title && <h3 className="mb-2 font-semibold text-gray-900">{section.title}</h3>}
           <ul className="list-disc space-y-1 pl-5">
-            {section.items.map((item, i) => (
-              <li key={i} className="text-gray-700">
+            {section.items.map((item) => (
+              <li key={item} className="text-gray-700">
                 {item}
               </li>
             ))}
@@ -33,12 +31,10 @@ function Section({ section }: { section: ContentSection }) {
     case "steps":
       return (
         <div>
-          {section.title && (
-            <h3 className="mb-2 font-semibold text-gray-900">{section.title}</h3>
-          )}
+          {section.title && <h3 className="mb-2 font-semibold text-gray-900">{section.title}</h3>}
           <ol className="list-decimal space-y-1 pl-5">
-            {section.items.map((item, i) => (
-              <li key={i} className="text-gray-700">
+            {section.items.map((item) => (
+              <li key={item} className="text-gray-700">
                 {item}
               </li>
             ))}
@@ -95,9 +91,7 @@ export default async function ResourcePage({
   ]);
 
   if (!progressRow.data) {
-    await supabase
-      .from("reading_progress")
-      .insert({ user_id: user.id, resource_slug: slug });
+    await supabase.from("reading_progress").insert({ user_id: user.id, resource_slug: slug });
   }
 
   const isSaved = !!savedRow.data;
@@ -130,7 +124,7 @@ export default async function ResourcePage({
 
       <div className="space-y-6">
         {resource.sections.map((section, i) => (
-          <Section key={i} section={section} />
+          <Section key={`${section.type}-${i}`} section={section} />
         ))}
       </div>
 
