@@ -13,5 +13,5 @@ export default async function ForumPage() {
 
   const { data: threads } = await getThreads();
 
-  return <Forum threads={threads ?? []} />;
+  return <Forum threads={threads ?? []} userEmail={user.email ?? ""} />;
 }
