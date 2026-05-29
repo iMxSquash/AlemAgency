@@ -1,5 +1,5 @@
-import Link from "next/link";
 import type { Resource } from "@/types/bibliotheque";
+import Link from "next/link";
 
 /* Exact colors from Figma screenshot */
 const CATEGORY_BG: Record<string, string> = {
