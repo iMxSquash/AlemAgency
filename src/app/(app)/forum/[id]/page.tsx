@@ -1,7 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { ThreadDetail } from "@/components/forum/ThreadDetail";
-import { getThreadReplies } from "../actions";
+import { getThreadReplies, getDbThread } from "../actions";
 import forumData from "@/lib/data/forum.json";
 import type { ForumThread } from "@/types";
 
@@ -19,7 +19,15 @@ export default async function ThreadPage({ params }: Props) {
 
   if (!user) redirect("/login");
 
-  const thread = (forumData as ForumThread[]).find((t) => t.id === id);
+  const mockThread = (forumData as ForumThread[]).find((t) => t.id === id);
+
+  let thread: ForumThread | null = mockThread ?? null;
+
+  if (!thread) {
+    const { data } = await getDbThread(id);
+    thread = data;
+  }
+
   if (!thread) notFound();
 
   const { data: dbReplies } = await getThreadReplies(id);
