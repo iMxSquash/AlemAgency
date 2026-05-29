@@ -241,7 +241,7 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
             const progress = progressMap[r.id];
             return (
               <ResourceCard
-                key={r.id}
+                key={r.id ?? r.title}
                 resource={r}
                 isSaved={savedSet.has(r.id)}
                 isInProgress={!!progress && !progress.completed_at}
