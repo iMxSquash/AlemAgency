@@ -39,11 +39,7 @@ export default async function SignupPage({ searchParams }: Props) {
           </p>
         </div>
 
-        {error && (
-          <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
-            {error}
-          </p>
-        )}
+        {error && <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">{error}</p>}
 
         <form action={signUp} className="space-y-4">
           <div className="space-y-1">
