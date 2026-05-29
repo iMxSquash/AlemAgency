@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Hanken_Grotesk } from "next/font/google";
+import { Hanken_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
