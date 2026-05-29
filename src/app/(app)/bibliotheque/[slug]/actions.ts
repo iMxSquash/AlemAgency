@@ -1,8 +1,8 @@
 "use server";
 
+import { createClient } from "@/lib/supabase/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
 
 export async function saveResource(slug: string, _formData: FormData) {
   const supabase = await createClient();
@@ -36,7 +36,7 @@ export async function markAsCompleted(slug: string, _formData: FormData) {
       resource_slug: slug,
       completed_at: new Date().toISOString(),
     },
-    { onConflict: "user_id,resource_slug" },
+    { onConflict: "user_id,resource_slug" }
   );
 
   if (error) console.error("markAsCompleted:", error.message);

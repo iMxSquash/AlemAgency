@@ -1,9 +1,9 @@
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import categoriesData from "@/lib/data/categories.json";
+import resourcesData from "@/lib/data/resources.json";
 import { createClient } from "@/lib/supabase/server";
 import type { Resource } from "@/types";
-import resourcesData from "@/lib/data/resources.json";
-import categoriesData from "@/lib/data/categories.json";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import { unsaveResource } from "./actions";
 
 const resources = resourcesData as Resource[];
@@ -56,7 +56,9 @@ export default async function MesFichesPage() {
                   </div>
                   <div className="ml-4 flex shrink-0 items-center gap-2">
                     {category && (
-                      <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${category.color}`}>
+                      <span
+                        className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${category.color}`}
+                      >
                         {category.label}
                       </span>
                     )}
