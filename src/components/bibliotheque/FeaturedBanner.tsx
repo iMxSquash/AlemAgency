@@ -14,7 +14,6 @@ export function FeaturedBanner() {
     >
       {/* Left content */}
       <div className="flex flex-col flex-1" style={{ gap: 12 }}>
-
         {/* PARCOURS À LA UNE */}
         <span
           style={{
@@ -58,8 +57,8 @@ export function FeaturedBanner() {
             margin: 0,
           }}
         >
-          Des fiches conçus par des professionnels de la santé (psychologue,
-          pédiatre, orthophinsites...)
+          Des fiches conçus par des professionnels de la santé (psychologue, pédiatre,
+          orthophinsites...)
         </p>
 
         {/* CTA button — padding 12px 20px, radius 999, bg white */}

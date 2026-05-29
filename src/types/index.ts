@@ -14,6 +14,8 @@ export type Category = {
 
 export type ResourceType = "guide" | "fiche" | "outil";
 
+export type FilterCategory = "Toutes" | ResourceCategory;
+
 export type ContentSection =
   | { type: "text"; content: string }
   | { type: "list"; title?: string; items: string[] }

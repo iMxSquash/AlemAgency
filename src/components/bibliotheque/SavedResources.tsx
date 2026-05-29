@@ -1,9 +1,27 @@
-import { FileText, Play, Heart } from "lucide-react";
+import { FileText, Heart, Play } from "lucide-react";
 
 const SAVED = [
-  { id: "1", icon: FileText, color: "text-blue-500", title: "Fiche pictogrammes transitions", subtitle: "Fiche pratique · sauvegardée hier" },
-  { id: "2", icon: Play, color: "text-green-500", title: "Webinaire · DYS au quotidien", subtitle: "Vidéo · sauvegardée hier" },
-  { id: "3", icon: Heart, color: "text-pink-500", title: "Scripts dialogue parents", subtitle: "Article · sauvegardée la semaine dernière" },
+  {
+    id: "1",
+    icon: FileText,
+    color: "text-blue-500",
+    title: "Fiche pictogrammes transitions",
+    subtitle: "Fiche pratique · sauvegardée hier",
+  },
+  {
+    id: "2",
+    icon: Play,
+    color: "text-green-500",
+    title: "Webinaire · DYS au quotidien",
+    subtitle: "Vidéo · sauvegardée hier",
+  },
+  {
+    id: "3",
+    icon: Heart,
+    color: "text-pink-500",
+    title: "Scripts dialogue parents",
+    subtitle: "Article · sauvegardée la semaine dernière",
+  },
 ];
 
 export function SavedResources() {

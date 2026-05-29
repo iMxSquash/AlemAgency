@@ -1,17 +1,17 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import type { FilterCategory, Resource } from "@/types/bibliotheque";
 import { Search } from "lucide-react";
-import { ResourceCard } from "./ResourceCard";
+import { useMemo, useState } from "react";
 import { FeaturedBanner } from "./FeaturedBanner";
-import type { Resource, FilterCategory } from "@/types/bibliotheque";
+import { ResourceCard } from "./ResourceCard";
 
 const FILTER_PILLS: { label: string; value: FilterCategory; count: number }[] = [
-  { label: "Toutes", value: "Toutes",       count: 124 },
-  { label: "TSA",    value: "Autisme",      count: 124 },
-  { label: "TDAH",   value: "TDAH",         count: 124 },
-  { label: "DYS",    value: "Dyslexie",     count: 124 },
-  { label: "TDI",    value: "Comportement", count: 124 },
+  { label: "Toutes", value: "Toutes", count: 124 },
+  { label: "TSA", value: "Autisme", count: 124 },
+  { label: "TDAH", value: "TDAH", count: 124 },
+  { label: "DYS", value: "Dyslexie", count: 124 },
+  { label: "TDI", value: "Comportement", count: 124 },
 ];
 
 interface Props {
@@ -20,11 +20,7 @@ interface Props {
   progressMap?: Record<string, { completed_at: string | null }>;
 }
 
-export function BibliothequeClient({
-  resources,
-  savedResourceIds = [],
-  progressMap = {},
-}: Props) {
+export function BibliothequeClient({ resources, savedResourceIds = [], progressMap = {} }: Props) {
   const [search, setSearch] = useState("");
   const [activeCategories, setActiveCategories] = useState<Set<FilterCategory>>(
     new Set(["Toutes"])
@@ -49,13 +45,10 @@ export function BibliothequeClient({
   const filtered = useMemo(() => {
     return resources.filter((r) => {
       const matchCat =
-        activeCategories.has("Toutes") ||
-        activeCategories.has(r.category as FilterCategory);
+        activeCategories.has("Toutes") || activeCategories.has(r.category as FilterCategory);
       const q = search.toLowerCase().trim();
       const matchSearch =
-        !q ||
-        r.title.toLowerCase().includes(q) ||
-        r.description.toLowerCase().includes(q);
+        !q || r.title.toLowerCase().includes(q) || r.description.toLowerCase().includes(q);
       return matchCat && matchSearch;
     });
   }, [resources, activeCategories, search]);
@@ -73,7 +66,6 @@ export function BibliothequeClient({
         flex: "1 0 0",
       }}
     >
-
       {/* Page header */}
       <div>
         <h1
@@ -97,8 +89,8 @@ export function BibliothequeClient({
             margin: 0,
           }}
         >
-          Fiches pratique qu&apos;un enseignant / intervenant peut ouvrir entre
-          deux cours et appliquer le lendemain.
+          Fiches pratique qu&apos;un enseignant / intervenant peut ouvrir entre deux cours et
+          appliquer le lendemain.
         </p>
       </div>
 
@@ -114,7 +106,6 @@ export function BibliothequeClient({
           alignItems: "flex-start",
           gap: "16px",
           alignSelf: "stretch",
-          
         }}
       >
         {/*
@@ -167,40 +158,40 @@ export function BibliothequeClient({
 
         {/* Filter pills */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-        {FILTER_PILLS.map(({ label, value, count }) => {
-          const isActive = activeCategories.has(value);
-          return (
-            <button
-              key={value}
-              type="button"
-              onClick={() => toggleCategory(value)}
-              className="flex items-center transition-colors"
-              style={{
-                gap: 6,
-                padding: "7px 16px",
-                borderRadius: 999,
-                fontFamily: "Inter, sans-serif",
-                fontSize: 13,
-                fontWeight: isActive ? 600 : 500,
-                background: isActive ? "#111827" : "#FFFFFF",
-                color: isActive ? "#FFFFFF" : "#374151",
-                border: isActive ? "1.5px solid #111827" : "1.5px solid #D1D5DB",
-                cursor: "pointer",
-              }}
-            >
-              {label}
-              <span
+          {FILTER_PILLS.map(({ label, value, count }) => {
+            const isActive = activeCategories.has(value);
+            return (
+              <button
+                key={value}
+                type="button"
+                onClick={() => toggleCategory(value)}
+                className="flex items-center transition-colors"
                 style={{
-                  fontSize: 12,
-                  fontWeight: 500,
-                  opacity: 0.7,
+                  gap: 6,
+                  padding: "7px 16px",
+                  borderRadius: 999,
+                  fontFamily: "Inter, sans-serif",
+                  fontSize: 13,
+                  fontWeight: isActive ? 600 : 500,
+                  background: isActive ? "#111827" : "#FFFFFF",
+                  color: isActive ? "#FFFFFF" : "#374151",
+                  border: isActive ? "1.5px solid #111827" : "1.5px solid #D1D5DB",
+                  cursor: "pointer",
                 }}
               >
-                {count}
-              </span>
-            </button>
-          );
-        })}
+                {label}
+                <span
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 500,
+                    opacity: 0.7,
+                  }}
+                >
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
         {/* end search+pills wrapper */}
       </div>
@@ -224,7 +215,14 @@ export function BibliothequeClient({
               setSearch("");
               setActiveCategories(new Set(["Toutes"]));
             }}
-            style={{ color: "#2F9DD4", fontSize: 13, marginTop: 12, background: "none", border: "none", cursor: "pointer" }}
+            style={{
+              color: "#2F9DD4",
+              fontSize: 13,
+              marginTop: 12,
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+            }}
           >
             Réinitialiser les filtres
           </button>
