@@ -1,6 +1,6 @@
-import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
 import { Forum } from "@/components/forum/Forum";
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
 import { getThreads } from "./actions";
 
 export default async function ForumPage() {

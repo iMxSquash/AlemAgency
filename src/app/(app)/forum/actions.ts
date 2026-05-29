@@ -1,9 +1,9 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
+import forumData from "@/lib/data/forum.json";
 import { createClient } from "@/lib/supabase/server";
 import type { ForumReply, ForumThread, ForumUserRole, ResourceCategory } from "@/types";
-import forumData from "@/lib/data/forum.json";
+import { revalidatePath } from "next/cache";
 
 export async function getThreads(): Promise<{ data: ForumThread[] | null; error: string | null }> {
   const supabase = await createClient();
@@ -35,7 +35,7 @@ export async function getThreads(): Promise<{ data: ForumThread[] | null; error:
 }
 
 export async function getDbThread(
-  id: string,
+  id: string
 ): Promise<{ data: ForumThread | null; error: string | null }> {
   const supabase = await createClient();
   const {
@@ -68,7 +68,7 @@ export async function getDbThread(
 }
 
 export async function getThreadReplies(
-  threadId: string,
+  threadId: string
 ): Promise<{ data: ForumReply[] | null; error: string | null }> {
   const supabase = await createClient();
   const {
@@ -97,7 +97,7 @@ export async function getThreadReplies(
 
 export async function addReply(
   threadId: string,
-  payload: { content: string; authorName: string; authorRole: ForumUserRole },
+  payload: { content: string; authorName: string; authorRole: ForumUserRole }
 ): Promise<{ data: null; error: string | null }> {
   const supabase = await createClient();
   const {
