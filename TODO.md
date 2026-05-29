@@ -12,26 +12,26 @@ Seules les interactions utilisateur (sauvegardes, progression) vont en base Supa
 ## Elwen — Base de données + Fiches
 
 ### Données JSON
-- [ ] Créer `src/lib/data/resources.json` — 10 fiches de démo (autisme, tdah, dyslexie, comportement, motricité)
-- [ ] Créer `src/lib/data/categories.json` — liste des catégories avec `slug`, `label`, `color`
-- [ ] Types TypeScript dans `src/types/index.ts` : `Resource`, `ContentSection`, `ResourceCategory`, `ResourceType`
+- [x] Créer `src/lib/data/resources.json` — 12 fiches de démo (TSA, TDAH, DYS, TDI)
+- [x] Créer `src/lib/data/categories.json` — liste des catégories avec `slug`, `label`, `color`
+- [x] Types TypeScript dans `src/types/index.ts` : `Resource`, `ContentSection`, `ResourceCategory`, `ResourceType`
 
 ### Migrations & schéma
-- [ ] Migration `saved_resources` — `id, user_id, resource_slug, saved_at`
-- [ ] Migration `reading_progress` — `id, user_id, resource_slug, started_at, completed_at` (null = pas terminé)
-- [ ] RLS sur les 2 tables (`/supabase-rls`)
+- [x] Migration `saved_resources` — `id, user_id, resource_slug, saved_at`
+- [x] Migration `reading_progress` — `id, user_id, resource_slug, started_at, completed_at` (null = pas terminé)
+- [x] RLS sur les 2 tables — appliqué en base via MCP
 
 ### Page fiche individuelle
-- [ ] Route `/bibliotheque/[slug]` — template qui rend `resources.json` selon le slug
-- [ ] Rendu des sections JSON : `text`, `list`, `steps`, `tip`, `warning`
-- [ ] Bouton "Sauvegarder" (Server Action : insert dans `saved_resources`)
-- [ ] Bouton "Marquer comme terminé" (Server Action : update `reading_progress.completed_at`)
-- [ ] Marquer automatiquement comme "en cours" à l'ouverture si pas déjà lu
+- [x] Route `/bibliotheque/[slug]` — template qui rend `resources.json` selon le slug
+- [x] Rendu des sections JSON : `text`, `list`, `steps`, `tip`, `warning`
+- [x] Bouton "Sauvegarder" (Server Action : insert dans `saved_resources`)
+- [x] Bouton "Marquer comme terminé" (Server Action : update `reading_progress.completed_at`)
+- [x] Marquer automatiquement comme "en cours" à l'ouverture si pas déjà lu
 
 ### Page fiches sauvegardées
-- [ ] Route `/mes-fiches` — lit les slugs dans `saved_resources`, retrouve les fiches dans le JSON
-- [ ] Section "En cours de lecture" (progress sans `completed_at`)
-- [ ] Bouton "Retirer des sauvegardes"
+- [x] Route `/mes-fiches` — lit les slugs dans `saved_resources`, retrouve les fiches dans le JSON
+- [x] Route `/en-cours` — fiches en cours de lecture (progress sans `completed_at`)
+- [x] Bouton "Retirer des sauvegardes"
 
 ---
 
@@ -74,5 +74,5 @@ Seules les interactions utilisateur (sauvegardes, progression) vont en base Supa
 
 ## Commun — à faire ensemble au kick-off
 
-- [ ] Types TypeScript validés par les 3 (structure `ContentSection` du JSON) avant de coder
-- [ ] Créer les branches : `feat/auth` (Noah), `feat/bibliotheque` (Omar), `feat/fiches` (Elwen)
+- [x] Types TypeScript validés par les 3 (structure `ContentSection` du JSON) avant de coder
+- [x] Créer les branches : `feat/auth` (Noah), `feat/bibliotheque` (Omar), `feat/fiches` (Elwen)
