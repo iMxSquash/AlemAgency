@@ -6,6 +6,12 @@ export type User = {
 
 export type ResourceCategory = "TSA" | "TDAH" | "DYS" | "TDI";
 
+export type Category = {
+  slug: ResourceCategory;
+  label: string;
+  color: string;
+};
+
 export type ResourceType = "guide" | "fiche" | "outil";
 
 export type ContentSection =
