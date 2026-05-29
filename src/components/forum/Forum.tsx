@@ -107,7 +107,7 @@ export function Forum({ threads, userEmail }: ForumProps) {
 
       {/* Controls */}
       <div className="flex flex-col gap-4">
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center">
           {/* Search */}
           <div className="flex flex-1 items-center gap-[10px] rounded-[14px] border border-border-default bg-surface px-4 py-3">
             <span className="text-[16px] font-medium text-text-primary">⌕</span>
@@ -120,22 +120,24 @@ export function Forum({ threads, userEmail }: ForumProps) {
             />
           </div>
 
-          {/* Category filter capsules */}
-          <div className="flex gap-[10px]">
-            {CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(activeCategory === cat ? "all" : cat)}
-                className={cn(
-                  "flex h-10 items-center justify-center rounded-capsule border px-2 text-[10px] font-semibold uppercase tracking-[0.06em] transition-colors",
-                  activeCategory === cat
-                    ? "border-brand-100 bg-bleu-25 text-brand"
-                    : "border-border bg-neutral-100 text-text-secondary hover:border-border-default",
-                )}
-              >
-                {cat}
-              </button>
-            ))}
+          {/* Category filter capsules — scroll horizontal sur mobile, inline sur desktop */}
+          <div className="-mx-4 overflow-x-auto overscroll-x-contain px-4 md:mx-0 md:overflow-visible md:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="flex gap-[10px] pb-0.5 md:pb-0">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(activeCategory === cat ? "all" : cat)}
+                  className={cn(
+                    "flex h-10 shrink-0 items-center justify-center rounded-capsule border px-3 text-[10px] font-semibold uppercase tracking-[0.06em] transition-colors",
+                    activeCategory === cat
+                      ? "border-brand-100 bg-bleu-25 text-brand"
+                      : "border-border bg-neutral-100 text-text-secondary hover:border-border-default",
+                  )}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
