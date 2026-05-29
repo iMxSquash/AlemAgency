@@ -1,6 +1,6 @@
 import { BibliothequeClient } from "@/components/bibliotheque/BibliothequeClient";
-import type { Resource } from "@/types/bibliotheque";
 import resourcesData from "@/lib/data/resources.json";
+import type { Resource } from "@/types/bibliotheque";
 
 export const metadata = {
   title: "Bibliothèque — Zenko",
@@ -8,7 +8,7 @@ export const metadata = {
 };
 
 export default function BibliothequePage() {
-  const resources = resourcesData as Resource[];
+  const resources = resourcesData as unknown as Resource[];
 
   //wire up Supabase
   // const supabase = createServerClient()
@@ -17,11 +17,5 @@ export default function BibliothequePage() {
   // const savedResourceIds = (saved ?? []).map(s => s.resource_id)
   // const progressMap = Object.fromEntries((progress ?? []).map(p => [p.resource_id, { completed_at: p.completed_at }]))
 
-  return (
-    <BibliothequeClient
-      resources={resources}
-      savedResourceIds={[]}
-      progressMap={{}}
-    />
-  );
+  return <BibliothequeClient resources={resources} savedResourceIds={[]} progressMap={{}} />;
 }

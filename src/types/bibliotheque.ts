@@ -1,9 +1,4 @@
-export type ResourceCategory =
-  | "Autisme"
-  | "TDAH"
-  | "Dyslexie"
-  | "Comportement"
-  | "Motricité";
+export type ResourceCategory = "Autisme" | "TDAH" | "Dyslexie" | "Comportement" | "Motricité";
 
 export type FilterCategory = "Toutes" | ResourceCategory;
 
