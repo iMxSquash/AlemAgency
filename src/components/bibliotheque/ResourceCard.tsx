@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Resource } from "@/types/bibliotheque";
 
 /* Exact colors from Figma screenshot */
@@ -37,12 +38,13 @@ const DOT_COLOR: Record<string, string> = {
 
 interface Props {
   resource: Resource;
+  href?: string;
   isSaved?: boolean;
   isInProgress?: boolean;
   isRead?: boolean;
 }
 
-export function ResourceCard({ resource, isSaved, isInProgress, isRead }: Props) {
+export function ResourceCard({ resource, href, isSaved, isInProgress, isRead }: Props) {
   const bg = CATEGORY_BG[resource.category] ?? "#E5E7EB";
   const label = CATEGORY_LABEL[resource.category] ?? resource.category;
   const badgeColor = BADGE_COLOR[resource.category] ?? "#374151";
@@ -55,7 +57,8 @@ export function ResourceCard({ resource, isSaved, isInProgress, isRead }: Props)
       flex: 1 0 0; align-self: stretch;
       border-radius: 20px; border: 1px solid #E8E7E3; background: #FFF;
     */
-    <div
+    <Link
+      href={href ?? "#"}
       className="flex flex-col items-start bg-white cursor-pointer group hover:shadow-lg transition-shadow duration-200"
       style={{
         width: "calc((100% - 108px) / 3)",
@@ -63,6 +66,7 @@ export function ResourceCard({ resource, isSaved, isInProgress, isRead }: Props)
         borderRadius: 20,
         border: "1px solid #E8E7E3",
         overflow: "hidden",
+        textDecoration: "none",
       }}
     >
       {/* Colored thumbnail — clean, no pills on top */}
@@ -152,6 +156,6 @@ export function ResourceCard({ resource, isSaved, isInProgress, isRead }: Props)
           </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

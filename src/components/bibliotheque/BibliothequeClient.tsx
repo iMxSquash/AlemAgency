@@ -239,10 +239,12 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
         >
           {filtered.map((r) => {
             const progress = progressMap[r.id];
+            const slug = (r as unknown as { slug: string }).slug ?? r.id;
             return (
               <ResourceCard
                 key={r.id ?? r.title}
                 resource={r}
+                href={`/bibliotheque/${slug}`}
                 isSaved={savedSet.has(r.id)}
                 isInProgress={!!progress && !progress.completed_at}
                 isRead={!!progress?.completed_at}
