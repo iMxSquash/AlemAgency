@@ -2,13 +2,14 @@ import categoriesData from "@/lib/data/categories.json";
 import resourcesData from "@/lib/data/resources.json";
 import { createClient } from "@/lib/supabase/server";
 import type { Resource } from "@/types";
+import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
 const resources = resourcesData as Resource[];
-import { CompleteButton } from "./CompleteButton";
 import { SaveButton } from "./SaveButton";
+import { ScrollTracker } from "./ScrollTracker";
 import { Section } from "./Section";
-import { markAsCompleted, saveResource } from "./actions";
+import { saveResource, unsaveResource } from "./actions";
 
 export default async function ResourcePage({
   params,
@@ -48,12 +49,33 @@ export default async function ResourcePage({
 
   const isSaved = !!savedRow.data;
   const isCompleted = !!progressRow.data?.completed_at;
-  const boundSaveResource = saveResource.bind(null, slug);
-  const boundMarkAsCompleted = markAsCompleted.bind(null, slug);
+  const boundToggleSave = isSaved ? unsaveResource.bind(null, slug) : saveResource.bind(null, slug);
 
   return (
     <main className="mx-auto max-w-2xl px-4 py-10">
       <div className="mb-8">
+        <Link
+          href="/bibliotheque"
+          className="mb-6 inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-900"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            aria-hidden="true"
+            className="h-4 w-4"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+            />
+          </svg>
+          Bibliothèque
+        </Link>
+
         <div className="mb-3 flex items-center gap-3">
           {category && (
             <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${category.color}`}>
@@ -68,7 +90,7 @@ export default async function ResourcePage({
             <h1 className="text-2xl font-bold text-gray-900">{resource.title}</h1>
             <p className="mt-2 text-gray-500">{resource.description}</p>
           </div>
-          <form action={boundSaveResource} className="shrink-0">
+          <form action={boundToggleSave} className="shrink-0">
             <SaveButton isSaved={isSaved} />
           </form>
         </div>
@@ -80,11 +102,7 @@ export default async function ResourcePage({
         ))}
       </div>
 
-      <div className="mt-10 flex justify-end border-t pt-6">
-        <form action={boundMarkAsCompleted}>
-          <CompleteButton isCompleted={isCompleted} />
-        </form>
-      </div>
+      <ScrollTracker slug={slug} isCompleted={isCompleted} />
     </main>
   );
 }
