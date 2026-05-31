@@ -73,6 +73,22 @@ supabase/
 - Pas de commentaires évidents ; un commentaire = une contrainte non-obvie
 - `cn()` de `@/lib/utils` pour les classes conditionnelles
 
+## Cycle de développement
+
+Toujours suivre ce cycle, sans exception :
+
+1. **Nouvelle branche** depuis `develop` avec le bon préfixe : `feat/`, `fix/`, `chore/`, `refactor/`, etc.
+2. **Développer** sur cette branche.
+3. **Vérifier** que les cinq checks passent avant de créer la PR :
+   ```bash
+   npm run lint        # Biome
+   npm run type-check  # tsc --noEmit
+   npm run test        # Vitest
+   npm run build       # build prod
+   ```
+4. **PR vers `develop`** une fois tous les checks au vert.
+5. **PR de `develop` vers `main`** quand `develop` est stable et validé.
+
 ## Commandes
 
 ```bash
