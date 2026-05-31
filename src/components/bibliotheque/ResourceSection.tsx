@@ -1,4 +1,4 @@
-import type { Resource } from "@/types/bibliotheque";
+import type { Resource } from "@/types/index";
 import Link from "next/link";
 import { ResourceCard } from "./ResourceCard";
 
@@ -23,7 +23,7 @@ export function ResourceSection({ title, resources, viewAllHref, count }: Props)
       </div>
       <div className="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
         {resources.map((r) => (
-          <ResourceCard key={r.id} resource={r} />
+          <ResourceCard key={r.slug} resource={r} href={`/bibliotheque/${r.slug}`} />
         ))}
       </div>
     </section>
