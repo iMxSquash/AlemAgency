@@ -1,26 +1,30 @@
 "use client";
 
-import type { FilterCategory, Resource } from "@/types/bibliotheque";
+import type { FilterCategory, Resource } from "@/types/index";
 import { Search } from "lucide-react";
 import { useMemo, useState } from "react";
 import { FeaturedBanner } from "./FeaturedBanner";
 import { ResourceCard } from "./ResourceCard";
 
-const FILTER_PILLS: { label: string; value: FilterCategory; count: number }[] = [
-  { label: "Toutes", value: "Toutes", count: 124 },
-  { label: "TSA", value: "Autisme", count: 124 },
-  { label: "TDAH", value: "TDAH", count: 124 },
-  { label: "DYS", value: "Dyslexie", count: 124 },
-  { label: "TDI", value: "Comportement", count: 124 },
+const FILTER_PILLS_CONFIG: { label: string; value: FilterCategory }[] = [
+  { label: "Toutes", value: "Toutes" },
+  { label: "TSA", value: "TSA" },
+  { label: "TDAH", value: "TDAH" },
+  { label: "DYS", value: "DYS" },
+  { label: "TDI", value: "TDI" },
 ];
 
 interface Props {
   resources: Resource[];
-  savedResourceIds?: string[];
+  savedResourceSlugs?: string[];
   progressMap?: Record<string, { completed_at: string | null }>;
 }
 
-export function BibliothequeClient({ resources, savedResourceIds = [], progressMap = {} }: Props) {
+export function BibliothequeClient({
+  resources,
+  savedResourceSlugs = [],
+  progressMap = {},
+}: Props) {
   const [search, setSearch] = useState("");
   const [activeCategories, setActiveCategories] = useState<Set<FilterCategory>>(
     new Set(["Toutes"])
@@ -42,6 +46,19 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
     setActiveCategories(next);
   }
 
+  const filterPills = useMemo(
+    () =>
+      FILTER_PILLS_CONFIG.map(({ label, value }) => ({
+        label,
+        value,
+        count:
+          value === "Toutes"
+            ? resources.length
+            : resources.filter((r) => r.category === value).length,
+      })),
+    [resources]
+  );
+
   const filtered = useMemo(() => {
     return resources.filter((r) => {
       const matchCat =
@@ -53,7 +70,7 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
     });
   }, [resources, activeCategories, search]);
 
-  const savedSet = new Set(savedResourceIds);
+  const savedSet = new Set(savedResourceSlugs);
 
   return (
     <div
@@ -62,7 +79,7 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
         flexDirection: "column",
         alignItems: "flex-start",
         gap: "32px",
-        padding: "32px 0px",
+        padding: "32px 40px",
         flex: "1 0 0",
       }}
     >
@@ -94,11 +111,6 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
         </p>
       </div>
 
-      {/*
-        Figma: display flex, flex-direction column, align-items flex-start,
-        gap 16px, align-self stretch
-        — wraps search bar + filter pills together
-      */}
       <div
         style={{
           display: "flex",
@@ -108,10 +120,7 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
           alignSelf: "stretch",
         }}
       >
-        {/*
-          Search bar bloc:
-          display: flex; align-items: center; gap: 16px; align-self: stretch;
-        */}
+        {/* Search bar */}
         <div
           style={{
             display: "flex",
@@ -124,7 +133,6 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
             background: "#FFFFFF",
           }}
         >
-          {/* Icon — matches typography: color #171614, size 16px */}
           <Search
             style={{
               width: 16,
@@ -134,7 +142,6 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
               strokeWidth: 2.5,
             }}
           />
-          {/* Input text — color #A6A39B, Inter 14px weight 400 */}
           <input
             type="text"
             value={search}
@@ -158,7 +165,7 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
 
         {/* Filter pills */}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-          {FILTER_PILLS.map(({ label, value, count }) => {
+          {filterPills.map(({ label, value, count }) => {
             const isActive = activeCategories.has(value);
             return (
               <button
@@ -180,28 +187,19 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
                 }}
               >
                 {label}
-                <span
-                  style={{
-                    fontSize: 12,
-                    fontWeight: 500,
-                    opacity: 0.7,
-                  }}
-                >
-                  {count}
-                </span>
+                <span style={{ fontSize: 12, fontWeight: 500, opacity: 0.7 }}>{count}</span>
               </button>
             );
           })}
         </div>
-        {/* end search+pills wrapper */}
       </div>
 
       {/* Featured banner */}
-      <div style={{}}>
+      <div style={{ alignSelf: "stretch" }}>
         <FeaturedBanner />
       </div>
 
-      {/* Resource grid — 3 cols, gap 24 */}
+      {/* Resource grid */}
       {filtered.length === 0 ? (
         <div
           className="flex flex-col items-center justify-center text-gray-400"
@@ -231,21 +229,20 @@ export function BibliothequeClient({ resources, savedResourceIds = [], progressM
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: "54px",
+            alignItems: "flex-start",
+            gap: "24px",
             alignSelf: "stretch",
             flexWrap: "wrap",
           }}
         >
           {filtered.map((r) => {
-            const progress = progressMap[r.id];
-            const slug = (r as unknown as { slug: string }).slug ?? r.id;
+            const progress = progressMap[r.slug];
             return (
               <ResourceCard
-                key={r.id ?? r.title}
+                key={r.slug}
                 resource={r}
-                href={`/bibliotheque/${slug}`}
-                isSaved={savedSet.has(r.id)}
+                href={`/bibliotheque/${r.slug}`}
+                isSaved={savedSet.has(r.slug)}
                 isInProgress={!!progress && !progress.completed_at}
                 isRead={!!progress?.completed_at}
               />

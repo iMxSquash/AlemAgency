@@ -1,39 +1,32 @@
-import type { Resource } from "@/types/bibliotheque";
+import type { Resource } from "@/types/index";
 import Link from "next/link";
 
-/* Exact colors from Figma screenshot */
 const CATEGORY_BG: Record<string, string> = {
-  Autisme: "#4ADE80", // green
-  TDAH: "#FB923C", // orange
-  Dyslexie: "#FACC15", // yellow
-  Comportement: "#60A5FA", // blue
-  Motricité: "#C084FC", // purple
+  TSA: "#DBEAFE",
+  TDAH: "#FFEDD5",
+  DYS: "#D1FAE5",
+  TDI: "#EDE9FE",
 };
 
 const CATEGORY_LABEL: Record<string, string> = {
-  Autisme: "TSA",
+  TSA: "TSA",
   TDAH: "TDAH",
-  Dyslexie: "DYS",
-  Comportement: "TDI",
-  Motricité: "Motricité",
+  DYS: "DYS",
+  TDI: "TDI",
 };
 
-/* Badge text color per category */
 const BADGE_COLOR: Record<string, string> = {
-  Autisme: "#166534",
-  TDAH: "#7C2D12",
-  Dyslexie: "#713F12",
-  Comportement: "#1E3A5F",
-  Motricité: "#581C87",
+  TSA: "#1D4ED8",
+  TDAH: "#C2410C",
+  DYS: "#047857",
+  TDI: "#6D28D9",
 };
 
-/* Author dot color per category */
 const DOT_COLOR: Record<string, string> = {
-  Autisme: "#4ADE80",
+  TSA: "#60A5FA",
   TDAH: "#FB923C",
-  Dyslexie: "#FACC15",
-  Comportement: "#60A5FA",
-  Motricité: "#C084FC",
+  DYS: "#34D399",
+  TDI: "#A78BFA",
 };
 
 interface Props {
@@ -51,12 +44,6 @@ export function ResourceCard({ resource, href, isSaved, isInProgress, isRead }: 
   const dotColor = DOT_COLOR[resource.category] ?? "#9CA3AF";
 
   return (
-    /*
-      Figma:
-      display: flex; flex-direction: column; align-items: flex-start;
-      flex: 1 0 0; align-self: stretch;
-      border-radius: 20px; border: 1px solid #E8E7E3; background: #FFF;
-    */
     <Link
       href={href ?? "#"}
       className="flex flex-col items-start bg-white cursor-pointer group hover:shadow-lg transition-shadow duration-200"
@@ -69,9 +56,8 @@ export function ResourceCard({ resource, href, isSaved, isInProgress, isRead }: 
         textDecoration: "none",
       }}
     >
-      {/* Colored thumbnail — clean, no pills on top */}
+      {/* Colored thumbnail */}
       <div className="w-full relative" style={{ background: bg, height: 160 }}>
-        {/* Status badges only */}
         {isRead && (
           <span
             className="absolute font-medium text-white"
@@ -113,7 +99,7 @@ export function ResourceCard({ resource, href, isSaved, isInProgress, isRead }: 
             style={{
               fontSize: 11,
               color: badgeColor,
-              background: `${bg}55`,
+              background: `${bg}`,
               padding: "2px 10px",
               borderRadius: 999,
               letterSpacing: "0.02em",
@@ -145,14 +131,19 @@ export function ResourceCard({ resource, href, isSaved, isInProgress, isRead }: 
           {resource.description}
         </p>
 
-        {/* Author row — colored dot + name (matches Figma) */}
-        <div className="flex items-center" style={{ gap: 6, marginTop: 4 }}>
-          <span
-            className="rounded-full shrink-0"
-            style={{ width: 8, height: 8, background: dotColor }}
-          />
-          <span className="text-gray-500" style={{ fontFamily: "Inter", fontSize: 12 }}>
-            {resource.author}
+        {/* Footer row */}
+        <div className="flex items-center justify-between" style={{ marginTop: 4 }}>
+          <div className="flex items-center" style={{ gap: 6 }}>
+            <span
+              className="rounded-full shrink-0"
+              style={{ width: 8, height: 8, background: dotColor }}
+            />
+            <span className="text-gray-500" style={{ fontFamily: "Inter", fontSize: 12 }}>
+              {resource.type.charAt(0).toUpperCase() + resource.type.slice(1)}
+            </span>
+          </div>
+          <span className="text-gray-400" style={{ fontFamily: "Inter", fontSize: 12 }}>
+            {resource.estimatedReadTime} min
           </span>
         </div>
       </div>
