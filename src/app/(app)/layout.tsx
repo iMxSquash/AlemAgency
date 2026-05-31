@@ -42,7 +42,6 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
       style={{
         display: "flex",
         minHeight: "100vh",
-        background: "#FAFAF9",
         position: "relative",
       }}
     >
