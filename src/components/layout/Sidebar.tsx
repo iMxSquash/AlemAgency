@@ -4,33 +4,42 @@ import { Bookmark, LayoutDashboard, LogOut, PlayCircle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const NAV_ITEMS = [
-  { href: "/bibliotheque", label: "Tableau de bord", icon: LayoutDashboard, badge: null },
-  { href: "/en-cours", label: "En cours...", icon: PlayCircle, badge: 0 },
-  { href: "/mes-fiches", label: "Fiches enregistrées", icon: Bookmark, badge: 8 },
-];
+interface SidebarUser {
+  displayName: string;
+  email: string;
+  initials: string;
+}
 
-const FORUM_ITEMS = [
-  // { href: "/populaires", label: "Populaires" },
-  { href: "/forum", label: "Explorer" },
-];
+interface SidebarProps {
+  user: SidebarUser;
+  savedCount: number;
+  inProgressCount: number;
+}
 
-export function Sidebar() {
+const FORUM_ITEMS = [{ href: "/forum", label: "Explorer" }];
+
+export function Sidebar({ user, savedCount, inProgressCount }: SidebarProps) {
   const pathname = usePathname();
+
+  const NAV_ITEMS = [
+    { href: "/bibliotheque", label: "Tableau de bord", icon: LayoutDashboard, badge: null },
+    { href: "/en-cours", label: "En cours...", icon: PlayCircle, badge: inProgressCount },
+    { href: "/mes-fiches", label: "Fiches enregistrées", icon: Bookmark, badge: savedCount },
+  ];
 
   return (
     <aside
       className="fixed top-0 left-0 flex flex-col bg-white"
       style={{
         width: 248,
-        height: "100vh", // fills full screen height always
+        height: "100vh",
         padding: "0",
         borderRight: "1px solid #E8E7E3",
         zIndex: 30,
         overflowY: "auto",
       }}
     >
-      {/* Logo — padding: 4px 8px 24px 8px */}
+      {/* Logo */}
       <div style={{ padding: "24px 16px 0 16px" }}>
         <div style={{ padding: "4px 8px 24px 8px" }}>
           <ZenkoLogo />
@@ -81,7 +90,7 @@ export function Sidebar() {
                   }}
                 />
                 <span style={{ flex: 1 }}>{label}</span>
-                {badge !== null && badge !== undefined && (
+                {badge !== null && badge !== undefined && badge > 0 && (
                   <span
                     style={{
                       fontSize: 11,
@@ -141,10 +150,9 @@ export function Sidebar() {
         </nav>
       </div>
 
-      {/* Spacer pushes footer to bottom */}
       <div style={{ flex: 1 }} />
 
-      {/* User footer — always visible at bottom */}
+      {/* User footer */}
       <div
         style={{
           padding: "16px",
@@ -171,7 +179,7 @@ export function Sidebar() {
               flexShrink: 0,
             }}
           >
-            MD
+            {user.initials}
           </div>
           <div style={{ minWidth: 0 }}>
             <p
@@ -181,39 +189,53 @@ export function Sidebar() {
                 color: "#111827",
                 margin: 0,
                 lineHeight: 1.3,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
               }}
             >
-              Marie Dupont
+              {user.displayName}
             </p>
-            <p style={{ fontSize: 12, color: "#9CA3AF", margin: 0 }}>Enseignante CM1</p>
+            <p
+              style={{
+                fontSize: 12,
+                color: "#9CA3AF",
+                margin: 0,
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                whiteSpace: "nowrap",
+              }}
+            >
+              {user.email}
+            </p>
           </div>
         </div>
 
-        {/* Se déconnecter — red button */}
-        <button
-          type="button"
-          style={{
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 8,
-            padding: "8px",
-            // gap: "10px",
-            alignSelf: "stretch",
-            borderRadius: "12px",
-            border: "none",
-            background: "#E04E4E",
-            color: "#FFFFFF",
-            fontSize: "14px",
-            fontWeight: 500,
-            cursor: "pointer",
-            // justifyContent: "flex-start",
-          }}
-        >
-          <LogOut style={{ width: 14, height: 14 }} />
-          Se déconnecter
-        </button>
+        {/* Se déconnecter */}
+        <form action="/api/auth/logout" method="post">
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              padding: "8px",
+              alignSelf: "stretch",
+              borderRadius: "12px",
+              border: "none",
+              background: "#E04E4E",
+              color: "#FFFFFF",
+              fontSize: "14px",
+              fontWeight: 500,
+              cursor: "pointer",
+            }}
+          >
+            <LogOut style={{ width: 14, height: 14 }} />
+            Se déconnecter
+          </button>
+        </form>
       </div>
     </aside>
   );
